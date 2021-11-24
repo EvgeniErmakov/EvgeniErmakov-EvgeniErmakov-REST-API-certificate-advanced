@@ -1,19 +1,35 @@
 plugins {
     id 'java'
+    id "org.springframework.boot" version "2.5.1"
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
+bootRun {
+    main = 'com.epam.esm.ApplicationConfiguration'
+    systemProperty "spring.profiles.active", 'prod'
 }
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-}
+allprojects {
+    plugins.withType(JavaPlugin) {
+        dependencies {
+            implementation 'org.postgresql:postgresql:42.3.1'
+            compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+            annotationProcessor 'org.projectlombok:lombok:1.18.20'
+            implementation group: 'org.springframework.boot', name: 'spring-boot-starter-hateoas', version: '2.5.1'
+            testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.5.1'
+            implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.5.1'
+            implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.5.1'
+            implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.5.1'
+            testImplementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+            implementation group: 'org.springframework', name: 'spring-tx', version: '5.3.7'
+            implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.4.4'
+            implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+            test {
+                useJUnitPlatform()
+            }
 
-test {
-    useJUnitPlatform()
+            repositories {
+                mavenCentral()
+            }
+        }
+    }
 }
