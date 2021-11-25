@@ -44,21 +44,21 @@ class CertificateServiceImplTest {
     @BeforeEach
     public void initCertificate() {
         certificate = Certificate.builder()
-                .name("for test")
-                .description("some info")
-                .price(new BigDecimal("100"))
-                .duration(7)
-                .tags(new HashSet<>())
-                .isActive(true)
-                .build();
+            .name("for test")
+            .description("some info")
+            .price(new BigDecimal("100"))
+            .duration(7)
+            .tags(new HashSet<>())
+            .isActive(true)
+            .build();
         certificateDTO = CertificateDTO.builder()
-                .id(1L)
-                .name("for test")
-                .description("some info")
-                .price(new BigDecimal("100"))
-                .duration(7)
-                .tags(new HashSet<>())
-                .build();
+            .id(1L)
+            .name("for test")
+            .description("some info")
+            .price(new BigDecimal("100"))
+            .duration(7)
+            .tags(new HashSet<>())
+            .build();
     }
 
     @Test
@@ -101,10 +101,13 @@ class CertificateServiceImplTest {
     void updateCertificate() {
         Long id = 1L;
         Certificate certificate = Certificate.builder().name("testName").build();
-        Mockito.when(certificateDAO.findById(id)).thenReturn(Optional.of(CertificateServiceImplTest.certificate));
+        Mockito.when(certificateDAO.findById(id))
+            .thenReturn(Optional.of(CertificateServiceImplTest.certificate));
         Mockito.when(mapperDTO.convertDTOToCertificate(certificateDTO)).thenReturn(certificate);
-        Mockito.when(certificateDAO.update(CertificateServiceImplTest.certificate, certificate)).thenReturn(CertificateServiceImplTest.certificate);
-        Mockito.when(mapperDTO.convertCertificateToDTO(CertificateServiceImplTest.certificate)).thenReturn(certificateDTO);
+        Mockito.when(certificateDAO.update(CertificateServiceImplTest.certificate, certificate))
+            .thenReturn(CertificateServiceImplTest.certificate);
+        Mockito.when(mapperDTO.convertCertificateToDTO(CertificateServiceImplTest.certificate))
+            .thenReturn(certificateDTO);
         CertificateDTO actual = certificateService.update(certificateDTO);
         verify(certificateDAO).update(CertificateServiceImplTest.certificate, certificate);
         verifyNoMoreInteractions(certificateDAO);
@@ -117,7 +120,8 @@ class CertificateServiceImplTest {
         certificateDTO.setId(id);
         certificate.setId(id);
         Mockito.when(certificateDAO.findById(id)).thenReturn(Optional.empty());
-        Assertions.assertThrows(CertificateNotFoundException.class, () -> certificateService.update(certificateDTO));
+        Assertions.assertThrows(CertificateNotFoundException.class,
+            () -> certificateService.update(certificateDTO));
     }
 
     @Test

@@ -61,8 +61,8 @@ class TagServiceImplTest {
         Mockito.when(tagDAO.findAll(new Page())).thenReturn(tags);
         tags.add(tag);
         List<TagDTO> expected = tags.stream()
-                .map(mapperDTO::convertTagToDTO)
-                .collect(Collectors.toList());
+            .map(mapperDTO::convertTagToDTO)
+            .collect(Collectors.toList());
         List<TagDTO> actual = tagService.findAll(new Page());
         verify(tagDAO).findAll(new Page());
         verifyNoMoreInteractions(tagDAO);

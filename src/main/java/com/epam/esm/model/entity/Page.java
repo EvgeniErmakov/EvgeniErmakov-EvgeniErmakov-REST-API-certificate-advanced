@@ -18,5 +18,4 @@ public class Page {
 
     @Min(1)
     private int size = 5;
-
 }

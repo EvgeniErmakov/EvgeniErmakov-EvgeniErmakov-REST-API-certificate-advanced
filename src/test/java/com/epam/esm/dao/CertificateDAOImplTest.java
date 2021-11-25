@@ -1,6 +1,5 @@
 package com.epam.esm.dao;
 
-import com.epam.esm.dao.CertificateDAO;
 import com.epam.esm.model.entity.Certificate;
 import com.epam.esm.model.entity.Page;
 import org.junit.jupiter.api.Assertions;
@@ -39,15 +38,15 @@ class CertificateDAOImplTest {
     @Test
     void updateTest() {
         Certificate certificate = Certificate.builder()
-                .name("certificate")
-                .price(new BigDecimal(100))
-                .duration(10)
-                .build();
+            .name("certificate")
+            .price(new BigDecimal(100))
+            .duration(10)
+            .build();
         Certificate update = Certificate.builder()
-                .name("update")
-                .price(new BigDecimal(50))
-                .duration(5)
-                .build();
+            .name("update")
+            .price(new BigDecimal(50))
+            .duration(5)
+            .build();
         Certificate updatedCertificate = certificateDAO.update(certificate, update);
         Assertions.assertEquals(5, updatedCertificate.getDuration());
     }

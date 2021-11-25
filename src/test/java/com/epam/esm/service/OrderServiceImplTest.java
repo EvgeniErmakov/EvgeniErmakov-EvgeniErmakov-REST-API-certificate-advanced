@@ -47,13 +47,13 @@ class OrderServiceImplTest {
     @BeforeEach
     public void initOrder() {
         order = Order.builder()
-                .cost(new BigDecimal("100"))
-                .build();
+            .cost(new BigDecimal("100"))
+            .build();
         orderDTO = OrderDTO.builder()
-                .userId(1L)
-                .certificateId(new ArrayList<>())
-                .cost(new BigDecimal("100"))
-                .build();
+            .userId(1L)
+            .certificateId(new ArrayList<>())
+            .cost(new BigDecimal("100"))
+            .build();
     }
 
     @Test

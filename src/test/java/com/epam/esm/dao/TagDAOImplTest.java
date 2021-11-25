@@ -1,6 +1,5 @@
 package com.epam.esm.dao;
 
-import com.epam.esm.dao.TagDAO;
 import com.epam.esm.model.entity.Tag;
 import com.epam.esm.model.entity.Page;
 import org.junit.jupiter.api.Assertions;

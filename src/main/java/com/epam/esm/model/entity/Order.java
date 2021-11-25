@@ -22,9 +22,9 @@ public class Order {
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
     @JoinTable(
-            name = "order_has_gift_certificate",
-            joinColumns = @JoinColumn(name = "gift_order_id"),
-            inverseJoinColumns = @JoinColumn(name = "gift_certificate_id"))
+        name = "order_has_gift_certificate",
+        joinColumns = @JoinColumn(name = "gift_order_id"),
+        inverseJoinColumns = @JoinColumn(name = "gift_certificate_id"))
     private List<Certificate> certificates;
 
     @ManyToOne

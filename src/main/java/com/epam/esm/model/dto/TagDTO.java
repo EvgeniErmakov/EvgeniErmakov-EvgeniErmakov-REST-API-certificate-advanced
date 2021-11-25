@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TagDTO extends RepresentationModel<TagDTO> {
+
     private long id;
 
     @Size(min = 1, max = 300)

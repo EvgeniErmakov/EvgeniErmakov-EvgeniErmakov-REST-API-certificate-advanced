@@ -59,7 +59,8 @@ class UserServiceImplTest {
         List<User> users = new ArrayList<>();
         Mockito.when(userDAO.findAll(new Page())).thenReturn(users);
         users.add(user);
-        List<UserDTO> expected = users.stream().map(mapperDTO::convertUserToDTO).collect(Collectors.toList());
+        List<UserDTO> expected = users.stream().map(mapperDTO::convertUserToDTO)
+            .collect(Collectors.toList());
         List<UserDTO> actual = userService.findAll(new Page());
         verify(userDAO).findAll(new Page());
         verifyNoMoreInteractions(userDAO);

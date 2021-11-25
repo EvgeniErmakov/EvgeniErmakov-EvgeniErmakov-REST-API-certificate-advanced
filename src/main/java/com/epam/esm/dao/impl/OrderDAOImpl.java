@@ -38,5 +38,6 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public void delete(Order order) {}
+    public void delete(Order order) {
+    }
 }

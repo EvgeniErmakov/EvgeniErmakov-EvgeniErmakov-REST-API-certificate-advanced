@@ -1,6 +1,5 @@
 package com.epam.esm.dao;
 
-import com.epam.esm.dao.OrderDAO;;
 import com.epam.esm.model.entity.Order;
 import com.epam.esm.model.entity.User;
 import com.epam.esm.model.entity.Certificate;
@@ -44,18 +43,18 @@ class OrderDAOImplTest {
     @Transactional
     void createValid() {
         Order orderTest = Order.builder()
-                .certificates(new ArrayList<>())
-                .user(User.builder().id(4L).name("Dzmitry").build())
-                .cost(new BigDecimal(500))
-                .build();
+            .certificates(new ArrayList<>())
+            .user(User.builder().id(4L).name("Dzmitry").build())
+            .cost(new BigDecimal(500))
+            .build();
 
         orderTest.getCertificates()
-                .add(Certificate
-                        .builder()
-                        .name("for test")
-                        .description("for test")
-                        .price(new BigDecimal(500))
-                        .duration(365).build());
+            .add(Certificate
+                .builder()
+                .name("for test")
+                .description("for test")
+                .price(new BigDecimal(500))
+                .duration(365).build());
 
         Order actual = orderDAO.create(orderTest);
         Assertions.assertEquals(orderTest.getCost(), actual.getCost());

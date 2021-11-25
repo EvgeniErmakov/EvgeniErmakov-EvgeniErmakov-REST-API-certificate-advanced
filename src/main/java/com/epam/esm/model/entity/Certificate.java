@@ -42,9 +42,9 @@ public class Certificate {
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
     @JoinTable(
-            name = "relationship_certificates_and_tags",
-            joinColumns = @JoinColumn(name = "gift_certificate_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+        name = "relationship_certificates_and_tags",
+        joinColumns = @JoinColumn(name = "gift_certificate_id"),
+        inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private Set<Tag> tags;
 
     @ManyToMany(mappedBy = "certificates", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
@@ -64,4 +64,3 @@ public class Certificate {
         setLastUpdateDate(ZonedDateTime.now(ZoneId.systemDefault()));
     }
 }
-
