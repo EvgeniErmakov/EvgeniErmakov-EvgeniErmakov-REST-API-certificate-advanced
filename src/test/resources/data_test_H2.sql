@@ -9,6 +9,8 @@ CREATE TABLE IF NOT EXISTS gift_certificate
     last_update_date timestamp      NOT NULL,
     is_active        boolean        NOT NULL);
 
+TRUNCATE TABLE gift_certificate CASCADE;
+
 INSERT INTO gift_certificate (id, name, description, price, duration, create_date, last_update_date, is_active)
 VALUES (1, 'certificate of swimming pool', 'Visiting the pool', '20.5', 31,
         '2021-10-30T10:10:10-03:00', '2021-10-31T12:12:12-03:00', true),
@@ -31,6 +33,8 @@ CREATE TABLE IF NOT EXISTS tag
 (   id   SERIAL       NOT NULL,
     name VARCHAR(300) NOT NULL);
 
+TRUNCATE TABLE tag CASCADE;
+
 INSERT INTO tag
 VALUES (1, 'SPA'),
        (2, 'games'),
@@ -43,6 +47,8 @@ VALUES (1, 'SPA'),
 CREATE TABLE IF NOT EXISTS relationship_certificates_and_tags
 (   tag_id              BIGINT NOT NULL,
     gift_certificate_id BIGINT NOT NULL);
+
+TRUNCATE TABLE relationship_certificates_and_tags CASCADE;
 
 INSERT INTO relationship_certificates_and_tags
 VALUES (4, 1),
@@ -57,6 +63,8 @@ CREATE TABLE IF NOT EXISTS clientele
 (   id    SERIAL         NOT NULL,
     name  VARCHAR(300)   NOT NULL);
 
+TRUNCATE TABLE clientele CASCADE;
+
 INSERT INTO clientele
 VALUES (1, 'Zhenya'),
        (2, 'Sergey'),
@@ -68,15 +76,19 @@ CREATE TABLE IF NOT EXISTS gift_order
   order_date     timestamp           NOT NULL,
   user_id        BIGINT              NOT NULL);
 
+TRUNCATE TABLE gift_order CASCADE;
+
 INSERT INTO gift_order
 VALUES (1, 5,  '2021-10-30T10:10:10-03:00', 1),
        (2, 50, '2021-10-30T10:10:10-03:00', 2);
 
-DROP TABLE IF EXISTS order_has_gift_certificate;
+drop table if exists order_has_gift_certificate CASCADE;
 
 CREATE TABLE order_has_gift_certificate
 ( gift_order_id                    SERIAL              NOT NULL,
   gift_certificate_id   BIGINT              NOT NULL);
+
+TRUNCATE TABLE order_has_gift_certificate CASCADE;
 
 INSERT INTO order_has_gift_certificate
 VALUES (1,1),
