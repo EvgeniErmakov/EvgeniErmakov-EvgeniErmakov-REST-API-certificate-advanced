@@ -7,6 +7,7 @@ import com.epam.esm.controller.UserController;
 import com.epam.esm.model.dto.CertificateDTO;
 import com.epam.esm.model.dto.OrderDTO;
 import com.epam.esm.model.dto.TagDTO;
+import com.epam.esm.model.dto.UserDTO;
 import com.epam.esm.model.entity.Page;
 import lombok.experimental.UtilityClass;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
@@ -79,5 +80,16 @@ public class ResponseAssembler {
         return tagDTO.add(
             WebMvcLinkBuilder.linkTo(methodOn(TagController.class).findById(tagDTO.getId()))
                 .withSelfRel());
+    }
+
+    public static List<UserDTO> assembleUsers(List<UserDTO> users) {
+        return users
+            .stream()
+            .map(ResponseAssembler::mapUser)
+            .collect(Collectors.toList());
+    }
+
+    private static UserDTO mapUser(UserDTO userDTO) {
+        return userDTO.add(linkTo(methodOn(UserController.class).findById(userDTO.getId())).withSelfRel());
     }
 }

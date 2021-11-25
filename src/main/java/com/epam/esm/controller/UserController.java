@@ -43,7 +43,7 @@ public class UserController {
      */
     @GetMapping
     public List<UserDTO> findAll(@Valid Page page) {
-        return userService.findAll(page);
+        return ResponseAssembler.assembleUsers(userService.findAll(page));
     }
 
     /**
