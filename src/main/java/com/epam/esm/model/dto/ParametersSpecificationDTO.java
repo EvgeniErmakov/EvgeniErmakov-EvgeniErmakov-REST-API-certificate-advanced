@@ -16,7 +16,7 @@ public class ParametersSpecificationDTO {
 
     private List<String> tags;
     private BigDecimal price;
-    private int duration;
+    private Integer duration;
     private String text;
     private List<String> order;
     private List<String> sort;
