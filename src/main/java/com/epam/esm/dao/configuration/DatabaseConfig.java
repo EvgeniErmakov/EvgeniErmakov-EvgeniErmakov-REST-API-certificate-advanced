@@ -3,10 +3,10 @@ package com.epam.esm.dao.configuration;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import javax.sql.DataSource;
@@ -14,39 +14,19 @@ import java.util.Properties;
 
 @Configuration
 @RequiredArgsConstructor
+@EnableConfigurationProperties
 public class DatabaseConfig {
 
-    @Value("postgres")
-    private String name;
-
-    @Value("jdbc:postgresql://localhost:5432/postgres")
-    private String url;
-
-    @Value("123")
-    private String password;
-
-    @Value("org.postgresql.Driver")
-    private String driver;
-
-    @Value("org.hibernate.dialect.PostgreSQLDialect")
-    private String dialect;
-
-    @Value("true")
-    private String showSql;
-
-    @Value("update")
-    private String hbm2DdlAuto;
-
-    @Value("com.epam.esm")
-    private String packagesForScan;
+    @Autowired
+    private DbProperties dbProperties;
 
     @Bean
     public DataSource getDataSource() {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl(url);
-        config.setUsername(name);
-        config.setPassword(password);
-        config.setDriverClassName(driver);
+        config.setJdbcUrl(dbProperties.getUrl());
+        config.setUsername(dbProperties.getUsername());
+        config.setPassword(dbProperties.getPassword());
+        config.setDriverClassName(dbProperties.getDriverClassName());
         return new HikariDataSource(config);
     }
 
@@ -54,11 +34,11 @@ public class DatabaseConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(getDataSource());
-        sessionFactory.setPackagesToScan(packagesForScan);
+        sessionFactory.setPackagesToScan(dbProperties.getPackagesForScan());
         Properties hibernateProperties = new Properties();
-        hibernateProperties.put("hibernate.dialect", dialect);
-        hibernateProperties.put("hibernate.show_sql", showSql);
-        hibernateProperties.put("hibernate.hbm2ddl.auto", hbm2DdlAuto);
+        hibernateProperties.put("hibernate.dialect", dbProperties.getDialect());
+        hibernateProperties.put("hibernate.show_sql", dbProperties.getShowSql());
+        hibernateProperties.put("hibernate.hbm2ddl.auto", dbProperties.getHbm2DdlAuto());
         sessionFactory.setHibernateProperties(hibernateProperties);
         return sessionFactory;
     }
