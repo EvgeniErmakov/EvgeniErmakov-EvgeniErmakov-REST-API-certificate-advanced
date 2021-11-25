@@ -1,7 +1,10 @@
 package com.epam.esm.model.entity;
 
-import lombok.*;
-
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.ZoneId;
