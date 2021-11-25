@@ -3,6 +3,7 @@ package com.epam.esm.dao.impl;
 import com.epam.esm.dao.TagDAO;
 import com.epam.esm.model.entity.Page;
 import com.epam.esm.model.entity.Tag;
+import javax.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
@@ -71,6 +72,7 @@ public class TagDAOImpl implements TagDAO {
             });
     }
 
+    @Transactional
     @Override
     public Tag findMostPopularTag() {
         return (Tag) entityManager.unwrap(Session.class)

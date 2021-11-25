@@ -2,6 +2,7 @@ package com.epam.esm.dao;
 
 import com.epam.esm.model.entity.Tag;
 import com.epam.esm.model.entity.Page;
+import javax.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ class TagDAOImplTest {
         Assertions.assertEquals(1, actual.get().getId());
     }
 
+    @Transactional
     @Test
     void findOrCreateTag() {
         Tag tag = Tag.builder().name("Epam").build();
@@ -50,6 +52,6 @@ class TagDAOImplTest {
     @Test
     void findMostPopularTag() {
         String actual = tagDAO.findMostPopularTag().getName();
-        Assertions.assertEquals("massage", actual);
+        Assertions.assertEquals("swimmingPool", actual);
     }
 }
