@@ -3,7 +3,6 @@ package com.epam.esm;
 import com.epam.esm.dao.OrderDAO;;
 import com.epam.esm.model.entity.Order;
 import com.epam.esm.model.entity.User;
-import com.epam.esm.configuration.TestConfiguration;
 import com.epam.esm.model.entity.Certificate;
 import com.epam.esm.model.entity.Page;
 import org.junit.jupiter.api.Assertions;
@@ -19,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@SpringBootTest(classes = {TestConfiguration.class})
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@SpringBootTest
 @Sql(scripts = "classpath:/data_test_H2.sql")
 class OrderDAOImplTest {
 

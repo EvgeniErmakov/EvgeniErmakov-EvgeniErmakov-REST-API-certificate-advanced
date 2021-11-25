@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - OrderDAOImplTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>OrderDAOImplTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.epam.esm.html">com.epam.esm</a> &gt; OrderDAOImplTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">1</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">2.590s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox failures" id="successRate">
+<div class="percent">66%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="createValid()"></a>
+<h3 class="failures">createValid()</h3>
+<span class="code">
+<pre>org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [fk8gi4qpa22d8majg14cotvpol]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.springframework.orm.hibernate5.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:210)
+	at org.springframework.orm.hibernate5.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:102)
+	at org.springframework.orm.hibernate5.HibernateExceptionTranslator.translateExceptionIfPossible(HibernateExceptionTranslator.java:77)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:242)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692)
+	at com.epam.esm.dao.impl.OrderDAOImpl$$EnhancerBySpringCGLIB$$2bb15c5.create(&lt;generated&gt;)
+	at com.epam.esm.OrderDAOImplTest.createValid(OrderDAOImplTest.java:60)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:688)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:210)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:206)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:131)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:65)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:99)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:79)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:75)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at com.sun.proxy.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:135)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:414)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:59)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:42)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:99)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:200)
+	at org.hibernate.dialect.identity.GetGeneratedKeysDelegate.executeAndExtract(GetGeneratedKeysDelegate.java:57)
+	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:43)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3196)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3802)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:84)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:645)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:282)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:263)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:317)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:330)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:287)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:193)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:123)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:185)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:128)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:55)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:99)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:720)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:706)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:311)
+	at com.sun.proxy.$Proxy126.persist(Unknown Source)
+	at com.epam.esm.dao.impl.OrderDAOImpl.create(OrderDAOImpl.java:36)
+	at com.epam.esm.dao.impl.OrderDAOImpl.create(OrderDAOImpl.java:13)
+	at com.epam.esm.dao.impl.OrderDAOImpl$$FastClassBySpringCGLIB$$852c3d3d.invoke(&lt;generated&gt;)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	... 95 more
+Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Нарушение ссылочной целостности: &quot;fk8gi4qpa22d8majg14cotvpol: public.gift_order FOREIGN KEY(user_id) REFERENCES public.clientele(id) (4)&quot;
+Referential integrity constraint violation: &quot;fk8gi4qpa22d8majg14cotvpol: public.gift_order FOREIGN KEY(user_id) REFERENCES public.clientele(id) (4)&quot;; SQL statement:
+insert into gift_order (id, cost, order_date, user_id) values (null, ?, ?, ?) [23506-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:459)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.constraint.ConstraintReferential.checkRowOwnTable(ConstraintReferential.java:319)
+	at org.h2.constraint.ConstraintReferential.checkRow(ConstraintReferential.java:261)
+	at org.h2.table.Table.fireConstraints(Table.java:1057)
+	at org.h2.table.Table.fireAfterRow(Table.java:1075)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:211)
+	at org.h2.command.dml.Insert.update(Insert.java:151)
+	at org.h2.command.CommandContainer.executeUpdateWithGeneratedKeys(CommandContainer.java:272)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:191)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:191)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:152)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	... 128 more
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="failures">createValid()</td>
+<td class="failures">0.908s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">findAllOrders()</td>
+<td class="success">0.875s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">findOrderById()</td>
+<td class="success">0.807s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2021-11-25 11:50:52.920  INFO 20000 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.epam.esm.OrderDAOImplTest], using SpringBootContextLoader
+2021-11-25 11:50:52.921  INFO 20000 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.epam.esm.OrderDAOImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-11-25 11:50:52.921  INFO 20000 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.epam.esm.OrderDAOImplTest]: OrderDAOImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2021-11-25 11:50:52.923  INFO 20000 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.epam.esm.Application for test class com.epam.esm.OrderDAOImplTest
+2021-11-25 11:50:52.924  INFO 20000 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2021-11-25 11:50:52.924  INFO 20000 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@426fc0f3, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2ef88c0c, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@7a598c18, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1fc32d97, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@23971ec4, org.springframework.test.context.support.DirtiesContextTestExecutionListener@49e56e56, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7fea023e, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@794327c1, org.springframework.test.context.event.EventPublishingTestExecutionListener@62b96713, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@cc22cc, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2f983b19, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4f056c04, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@662d0b08, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@7169f43, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@69b83c4b]
+2021-11-25 11:50:52.927  INFO 20000 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2021-11-25 11:50:52.928  INFO 20000 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.5.1)
+
+2021-11-25 11:50:52.945  INFO 20000 --- [    Test worker] com.epam.esm.OrderDAOImplTest            : Starting OrderDAOImplTest using Java 15.0.2 on LAPTOP-D3O57SJF with PID 20000 (started by Evgeni in C:\Users\Evgeni\IdeaProjects\REST-API-certificate-advanced)
+2021-11-25 11:50:52.946  INFO 20000 --- [    Test worker] com.epam.esm.OrderDAOImplTest            : No active profile set, falling back to default profiles: default
+2021-11-25 11:50:53.151  INFO 20000 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-25 11:50:53.164  INFO 20000 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 JPA repository interfaces.
+2021-11-25 11:50:53.247  INFO 20000 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2021-11-25 11:50:53.248  INFO 20000 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2021-11-25 11:50:53.273  INFO 20000 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+Hibernate: drop table if exists clientele CASCADE 
+Hibernate: drop table if exists gift_certificate CASCADE 
+Hibernate: drop table if exists gift_order CASCADE 
+Hibernate: drop table if exists order_has_gift_certificate CASCADE 
+Hibernate: drop table if exists relationship_certificates_and_tags CASCADE 
+Hibernate: drop table if exists tag CASCADE 
+Hibernate: create table clientele (id bigint generated by default as identity, name varchar(300) not null, primary key (id))
+Hibernate: create table gift_certificate (id bigint generated by default as identity, create_date timestamp, description varchar(300) not null, duration integer not null, is_active boolean not null, last_update_date timestamp, name varchar(300) not null, price decimal(10,2) not null, primary key (id))
+Hibernate: create table gift_order (id bigint generated by default as identity, cost decimal(10,2) not null, order_date timestamp, user_id bigint not null, primary key (id))
+Hibernate: create table order_has_gift_certificate (gift_order_id bigint not null, gift_certificate_id bigint not null)
+Hibernate: create table relationship_certificates_and_tags (gift_certificate_id bigint not null, tag_id bigint not null, primary key (gift_certificate_id, tag_id))
+Hibernate: create table tag (id bigint generated by default as identity, name varchar(300) not null, primary key (id))
+Hibernate: alter table clientele add constraint UK_aobfmhlv396hnawh3b75yfcut unique (name)
+Hibernate: alter table tag add constraint UK_1wdpsed5kna2y38hnbgrnhi5b unique (name)
+Hibernate: alter table gift_order add constraint FK8gi4qpa22d8majg14cotvpol foreign key (user_id) references clientele
+Hibernate: alter table order_has_gift_certificate add constraint FKp7rxfnbo172fdo7qmpjs631e8 foreign key (gift_certificate_id) references gift_certificate
+Hibernate: alter table order_has_gift_certificate add constraint FKaxxoocmkt7ft5d9wnabpw3x4b foreign key (gift_order_id) references gift_order
+Hibernate: alter table relationship_certificates_and_tags add constraint FK9212cpwrctblegfcgkv8as854 foreign key (tag_id) references tag
+Hibernate: alter table relationship_certificates_and_tags add constraint FKa93onw039ce54osfbyaca8cl1 foreign key (gift_certificate_id) references gift_certificate
+2021-11-25 11:50:53.336  INFO 20000 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-25 11:50:53.444  WARN 20000 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-25 11:50:53.758  INFO 20000 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2021-11-25 11:50:53.783  INFO 20000 --- [    Test worker] com.epam.esm.OrderDAOImplTest            : Started OrderDAOImplTest in 0.853 seconds (JVM running for 10.859)
+2021-11-25 11:50:53.788  INFO 20000 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@5525720 testClass = OrderDAOImplTest, testInstance = com.epam.esm.OrderDAOImplTest@32a3858a, testMethod = createValid@OrderDAOImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@2af25780 testClass = OrderDAOImplTest, locations = '{}', classes = '{class com.epam.esm.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@62e1e16e, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@5854b0d8, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@2cc7bb92, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6243f978, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4bbeda05, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@104229e3], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@598bbcde]; rollback [true]
+Hibernate: insert into gift_order (id, cost, order_date, user_id) values (null, ?, ?, ?)
+2021-11-25 11:50:53.820  WARN 20000 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 23506, SQLState: 23506
+2021-11-25 11:50:53.820 ERROR 20000 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : Нарушение ссылочной целостности: &quot;fk8gi4qpa22d8majg14cotvpol: public.gift_order FOREIGN KEY(user_id) REFERENCES public.clientele(id) (4)&quot;
+Referential integrity constraint violation: &quot;fk8gi4qpa22d8majg14cotvpol: public.gift_order FOREIGN KEY(user_id) REFERENCES public.clientele(id) (4)&quot;; SQL statement:
+insert into gift_order (id, cost, order_date, user_id) values (null, ?, ?, ?) [23506-200]
+2021-11-25 11:50:53.833  INFO 20000 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@5525720 testClass = OrderDAOImplTest, testInstance = com.epam.esm.OrderDAOImplTest@32a3858a, testMethod = createValid@OrderDAOImplTest, testException = org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [fk8gi4qpa22d8majg14cotvpol]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement, mergedContextConfiguration = [WebMergedContextConfiguration@2af25780 testClass = OrderDAOImplTest, locations = '{}', classes = '{class com.epam.esm.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@62e1e16e, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@5854b0d8, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@2cc7bb92, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6243f978, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4bbeda05, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@104229e3], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+2021-11-25 11:50:53.836  INFO 20000 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2021-11-25 11:50:53.837  INFO 20000 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.5.1)
+
+2021-11-25 11:50:53.854  INFO 20000 --- [    Test worker] com.epam.esm.OrderDAOImplTest            : Starting OrderDAOImplTest using Java 15.0.2 on LAPTOP-D3O57SJF with PID 20000 (started by Evgeni in C:\Users\Evgeni\IdeaProjects\REST-API-certificate-advanced)
+2021-11-25 11:50:53.854  INFO 20000 --- [    Test worker] com.epam.esm.OrderDAOImplTest            : No active profile set, falling back to default profiles: default
+2021-11-25 11:50:54.024  INFO 20000 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-25 11:50:54.036  INFO 20000 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 JPA repository interfaces.
+2021-11-25 11:50:54.108  INFO 20000 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2021-11-25 11:50:54.110  INFO 20000 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2021-11-25 11:50:54.136  INFO 20000 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+Hibernate: drop table if exists clientele CASCADE 
+Hibernate: drop table if exists gift_certificate CASCADE 
+Hibernate: drop table if exists gift_order CASCADE 
+Hibernate: drop table if exists order_has_gift_certificate CASCADE 
+Hibernate: drop table if exists relationship_certificates_and_tags CASCADE 
+Hibernate: drop table if exists tag CASCADE 
+Hibernate: create table clientele (id bigint generated by default as identity, name varchar(300) not null, primary key (id))
+Hibernate: create table gift_certificate (id bigint generated by default as identity, create_date timestamp, description varchar(300) not null, duration integer not null, is_active boolean not null, last_update_date timestamp, name varchar(300) not null, price decimal(10,2) not null, primary key (id))
+Hibernate: create table gift_order (id bigint generated by default as identity, cost decimal(10,2) not null, order_date timestamp, user_id bigint not null, primary key (id))
+Hibernate: create table order_has_gift_certificate (gift_order_id bigint not null, gift_certificate_id bigint not null)
+Hibernate: create table relationship_certificates_and_tags (gift_certificate_id bigint not null, tag_id bigint not null, primary key (gift_certificate_id, tag_id))
+Hibernate: create table tag (id bigint generated by default as identity, name varchar(300) not null, primary key (id))
+Hibernate: alter table clientele add constraint UK_aobfmhlv396hnawh3b75yfcut unique (name)
+Hibernate: alter table tag add constraint UK_1wdpsed5kna2y38hnbgrnhi5b unique (name)
+Hibernate: alter table gift_order add constraint FK8gi4qpa22d8majg14cotvpol foreign key (user_id) references clientele
+Hibernate: alter table order_has_gift_certificate add constraint FKp7rxfnbo172fdo7qmpjs631e8 foreign key (gift_certificate_id) references gift_certificate
+Hibernate: alter table order_has_gift_certificate add constraint FKaxxoocmkt7ft5d9wnabpw3x4b foreign key (gift_order_id) references gift_order
+Hibernate: alter table relationship_certificates_and_tags add constraint FK9212cpwrctblegfcgkv8as854 foreign key (tag_id) references tag
+Hibernate: alter table relationship_certificates_and_tags add constraint FKa93onw039ce54osfbyaca8cl1 foreign key (gift_certificate_id) references gift_certificate
+2021-11-25 11:50:54.197  INFO 20000 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-25 11:50:54.323  WARN 20000 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-25 11:50:54.673  INFO 20000 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2021-11-25 11:50:54.695  INFO 20000 --- [    Test worker] com.epam.esm.OrderDAOImplTest            : Started OrderDAOImplTest in 0.856 seconds (JVM running for 11.771)
+Hibernate: select order0_.id as id1_2_, order0_.cost as cost2_2_, order0_.order_date as order_da3_2_, order0_.user_id as user_id4_2_ from gift_order order0_ limit ?
+Hibernate: select user0_.id as id1_0_0_, user0_.name as name2_0_0_ from clientele user0_ where user0_.id=?
+Hibernate: select user0_.id as id1_0_0_, user0_.name as name2_0_0_ from clientele user0_ where user0_.id=?
+2021-11-25 11:50:54.712  INFO 20000 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2021-11-25 11:50:54.715  INFO 20000 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.5.1)
+
+2021-11-25 11:50:54.731  INFO 20000 --- [    Test worker] com.epam.esm.OrderDAOImplTest            : Starting OrderDAOImplTest using Java 15.0.2 on LAPTOP-D3O57SJF with PID 20000 (started by Evgeni in C:\Users\Evgeni\IdeaProjects\REST-API-certificate-advanced)
+2021-11-25 11:50:54.731  INFO 20000 --- [    Test worker] com.epam.esm.OrderDAOImplTest            : No active profile set, falling back to default profiles: default
+2021-11-25 11:50:54.901  INFO 20000 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-25 11:50:54.914  INFO 20000 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 JPA repository interfaces.
+2021-11-25 11:50:54.985  INFO 20000 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2021-11-25 11:50:54.987  INFO 20000 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2021-11-25 11:50:55.011  INFO 20000 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+Hibernate: drop table if exists clientele CASCADE 
+Hibernate: drop table if exists gift_certificate CASCADE 
+Hibernate: drop table if exists gift_order CASCADE 
+Hibernate: drop table if exists order_has_gift_certificate CASCADE 
+Hibernate: drop table if exists relationship_certificates_and_tags CASCADE 
+Hibernate: drop table if exists tag CASCADE 
+Hibernate: create table clientele (id bigint generated by default as identity, name varchar(300) not null, primary key (id))
+Hibernate: create table gift_certificate (id bigint generated by default as identity, create_date timestamp, description varchar(300) not null, duration integer not null, is_active boolean not null, last_update_date timestamp, name varchar(300) not null, price decimal(10,2) not null, primary key (id))
+Hibernate: create table gift_order (id bigint generated by default as identity, cost decimal(10,2) not null, order_date timestamp, user_id bigint not null, primary key (id))
+Hibernate: create table order_has_gift_certificate (gift_order_id bigint not null, gift_certificate_id bigint not null)
+Hibernate: create table relationship_certificates_and_tags (gift_certificate_id bigint not null, tag_id bigint not null, primary key (gift_certificate_id, tag_id))
+Hibernate: create table tag (id bigint generated by default as identity, name varchar(300) not null, primary key (id))
+Hibernate: alter table clientele add constraint UK_aobfmhlv396hnawh3b75yfcut unique (name)
+Hibernate: alter table tag add constraint UK_1wdpsed5kna2y38hnbgrnhi5b unique (name)
+Hibernate: alter table gift_order add constraint FK8gi4qpa22d8majg14cotvpol foreign key (user_id) references clientele
+Hibernate: alter table order_has_gift_certificate add constraint FKp7rxfnbo172fdo7qmpjs631e8 foreign key (gift_certificate_id) references gift_certificate
+Hibernate: alter table order_has_gift_certificate add constraint FKaxxoocmkt7ft5d9wnabpw3x4b foreign key (gift_order_id) references gift_order
+Hibernate: alter table relationship_certificates_and_tags add constraint FK9212cpwrctblegfcgkv8as854 foreign key (tag_id) references tag
+Hibernate: alter table relationship_certificates_and_tags add constraint FKa93onw039ce54osfbyaca8cl1 foreign key (gift_certificate_id) references gift_certificate
+2021-11-25 11:50:55.062  INFO 20000 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-25 11:50:55.170  WARN 20000 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-25 11:50:55.481  INFO 20000 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2021-11-25 11:50:55.505  INFO 20000 --- [    Test worker] com.epam.esm.OrderDAOImplTest            : Started OrderDAOImplTest in 0.788 seconds (JVM running for 12.581)
+Hibernate: select order0_.id as id1_2_0_, order0_.cost as cost2_2_0_, order0_.order_date as order_da3_2_0_, order0_.user_id as user_id4_2_0_, user1_.id as id1_0_1_, user1_.name as name2_0_1_ from gift_order order0_ inner join clientele user1_ on order0_.user_id=user1_.id where order0_.id=?
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.1</a> at 25 нояб. 2021 г., 11:51:01</p>
+</div>
+</div>
+</body>
+</html>

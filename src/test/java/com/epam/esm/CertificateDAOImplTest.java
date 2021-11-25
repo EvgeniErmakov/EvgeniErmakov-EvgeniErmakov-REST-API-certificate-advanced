@@ -1,6 +1,5 @@
 package com.epam.esm;
 
-import com.epam.esm.configuration.TestConfiguration;
 import com.epam.esm.dao.CertificateDAO;
 import com.epam.esm.model.entity.Certificate;
 import com.epam.esm.model.entity.Page;
@@ -9,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.math.BigDecimal;
@@ -17,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-@SpringBootTest(classes = {TestConfiguration.class})
+@SpringBootTest
 @Sql(scripts = "classpath:/data_test_H2.sql")
 class CertificateDAOImplTest {
 
