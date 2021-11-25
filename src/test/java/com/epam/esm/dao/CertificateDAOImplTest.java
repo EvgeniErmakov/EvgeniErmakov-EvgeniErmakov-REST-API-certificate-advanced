@@ -1,4 +1,4 @@
-package com.epam.esm;
+package com.epam.esm.dao;
 
 import com.epam.esm.dao.CertificateDAO;
 import com.epam.esm.model.entity.Certificate;
