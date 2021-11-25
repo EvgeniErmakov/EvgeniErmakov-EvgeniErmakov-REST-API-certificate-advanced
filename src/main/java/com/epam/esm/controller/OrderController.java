@@ -25,23 +25,40 @@ public class OrderController {
 
     private static final int MIN_ID = 1;
 
+    /**
+     * @param id
+     * @return
+     */
     @GetMapping(value = "/{id}")
     public OrderDTO findById(@PathVariable @Min(MIN_ID) Long id) {
         return ResponseAssembler.assembleOrder(orderService.findById(id));
     }
 
+    /**
+     * @param page
+     * @return
+     */
     @GetMapping
     public List<OrderDTO> findAll(@Valid Page page) {
         return ResponseAssembler.assembleOrders(orderService.findAll(page));
     }
 
+    /**
+     * @param id
+     * @param page
+     * @return
+     */
     @GetMapping(value = "/{id}/certificates")
     public List<CertificateDTO> findAllByOrderId(@PathVariable @Min(MIN_ID) Long id,
-        @Valid Page page) {
+                                                 @Valid Page page) {
         return ResponseAssembler.assembleCertificates(
-            certificateService.findAllByOrderId(id, page));
+                certificateService.findAllByOrderId(id, page));
     }
 
+    /**
+     * @param orderDTO
+     * @return
+     */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public OrderDTO create(@Valid @RequestBody OrderDTO orderDTO) {

@@ -28,16 +28,29 @@ public class UserController {
 
     private static final int MIN_ID = 1;
 
+    /**
+     * @param id
+     * @return
+     */
     @GetMapping(value = "/{id}")
     public UserDTO findById(@PathVariable @Min(MIN_ID) Long id) {
         return userService.findById(id);
     }
 
+    /**
+     * @param page
+     * @return
+     */
     @GetMapping
     public List<UserDTO> findAll(@Valid Page page) {
         return userService.findAll(page);
     }
 
+    /**
+     * @param id
+     * @param page
+     * @return
+     */
     @GetMapping(value = "/{id}/orders")
     public List<OrderDTO> findUserOrders(@PathVariable @Min(MIN_ID) Long id, @Valid Page page) {
         return ResponseAssembler.assembleOrders(orderService.findAllOrdersByUserId(id, page));
