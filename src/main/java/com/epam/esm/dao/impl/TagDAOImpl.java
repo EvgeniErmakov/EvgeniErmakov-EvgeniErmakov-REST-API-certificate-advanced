@@ -64,7 +64,7 @@ public class TagDAOImpl implements TagDAO {
     }
 
     @Override
-    public Tag findOrCreate(Tag tag) {
+    public Tag find(Tag tag) {
         return findByName(tag.getName())
             .orElseGet(() -> {
                 entityManager.persist(tag);

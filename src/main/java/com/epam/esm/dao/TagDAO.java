@@ -8,7 +8,7 @@ public interface TagDAO extends CommonDAO<Tag, Long> {
 
     Optional<Tag> findByName(String name);
 
-    Tag findOrCreate(Tag tag);
+    Tag find(Tag tag);
 
     Tag findMostPopularTag();
 }
