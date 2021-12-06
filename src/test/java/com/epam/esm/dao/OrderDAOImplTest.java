@@ -26,6 +26,7 @@ class OrderDAOImplTest {
     private OrderDAO orderDAO;
 
     @Test
+    @Transactional
     void findAllOrders() {
         Page page = new Page();
         List<Order> orderList = orderDAO.findAll(page);
@@ -33,6 +34,7 @@ class OrderDAOImplTest {
     }
 
     @Test
+    @Transactional
     void findOrderById() {
         Long id = 1L;
         Optional<Order> order = orderDAO.findById(id);

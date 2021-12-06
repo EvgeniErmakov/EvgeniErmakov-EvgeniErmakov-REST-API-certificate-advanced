@@ -104,12 +104,12 @@ class CertificateServiceImplTest {
         Mockito.when(certificateDAO.findById(id))
             .thenReturn(Optional.of(CertificateServiceImplTest.certificate));
         Mockito.when(mapperDTO.convertDTOToCertificate(certificateDTO)).thenReturn(certificate);
-        Mockito.when(certificateDAO.update(CertificateServiceImplTest.certificate, certificate))
+        Mockito.when(certificateDAO.update(CertificateServiceImplTest.certificate))
             .thenReturn(CertificateServiceImplTest.certificate);
         Mockito.when(mapperDTO.convertCertificateToDTO(CertificateServiceImplTest.certificate))
             .thenReturn(certificateDTO);
         CertificateDTO actual = certificateService.update(certificateDTO);
-        verify(certificateDAO).update(CertificateServiceImplTest.certificate, certificate);
+        verify(certificateDAO).update(CertificateServiceImplTest.certificate);
         verifyNoMoreInteractions(certificateDAO);
         Assertions.assertEquals(actual.getName(), certificateDTO.getName());
     }

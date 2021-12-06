@@ -73,9 +73,9 @@ class TagServiceImplTest {
     void createTag() {
         Mockito.when(mapperDTO.convertTagToDTO(tag)).thenReturn(tagDTO);
         Mockito.when(mapperDTO.convertDTOToTag(tagDTO)).thenReturn(tag);
-        Mockito.when(tagDAO.findOrCreate(tag)).thenReturn(tag);
+        Mockito.when(tagDAO.find(tag)).thenReturn(tag);
         TagDTO actual = tagService.create(tagDTO);
-        verify(tagDAO).findOrCreate(tag);
+        verify(tagDAO).find(tag);
         verifyNoMoreInteractions(tagDAO);
         Assertions.assertEquals(tagDTO, actual);
     }

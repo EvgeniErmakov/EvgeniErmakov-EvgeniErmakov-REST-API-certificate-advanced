@@ -22,6 +22,7 @@ class TagDAOImplTest {
     private TagDAO tagDAO;
 
     @Test
+    @Transactional
     void findAllTags() {
         Page page = new Page();
         List<Tag> tagList = tagDAO.findAll(page);
@@ -29,6 +30,7 @@ class TagDAOImplTest {
     }
 
     @Test
+    @Transactional
     void findTagById() {
         Long id = 5L;
         Optional<Tag> tag = tagDAO.findById(id);
@@ -36,20 +38,22 @@ class TagDAOImplTest {
     }
 
     @Test
+    @Transactional
     void findByTagName() {
         Optional<Tag> actual = tagDAO.findByName("SPA");
         Assertions.assertEquals(1, actual.get().getId());
     }
 
-    @Transactional
     @Test
+    @Transactional
     void findOrCreateTag() {
         Tag tag = Tag.builder().name("Epam").build();
-        Tag actual = tagDAO.findOrCreate(tag);
+        Tag actual = tagDAO.find(tag);
         Assertions.assertEquals("Epam", actual.getName());
     }
 
     @Test
+    @Transactional
     void findMostPopularTag() {
         String actual = tagDAO.findMostPopularTag().getName();
         Assertions.assertEquals("massage", actual);

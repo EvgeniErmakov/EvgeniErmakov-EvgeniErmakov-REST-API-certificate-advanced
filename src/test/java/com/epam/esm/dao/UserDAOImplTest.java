@@ -12,6 +12,7 @@ import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @SpringBootTest
@@ -22,6 +23,7 @@ class UserDAOImplTest {
     private UserDAO userDAO;
 
     @Test
+    @Transactional
     void findAllUsers() {
         Page page = new Page();
         List<User> usersList = userDAO.findAll(page);
@@ -29,6 +31,7 @@ class UserDAOImplTest {
     }
 
     @Test
+    @Transactional
     void findUserById() {
         Long id = 1L;
         Optional<User> actual = userDAO.findById(id);
