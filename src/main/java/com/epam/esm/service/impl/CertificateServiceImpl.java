@@ -81,8 +81,10 @@ public class CertificateServiceImpl implements CertificateService {
         }
         Certificate certificate = optional.get();
         Certificate update = mapperDTO.convertDTOToCertificate(updateDTO);
-        certificate = certificateDAO.update(certificate, update);
+        certificate.setPrice(update.getPrice());
+        certificate.setDuration(update.getDuration());
         attachTags(certificate, updateDTO.getTags());
+        certificateDAO.update(certificate);
         return mapperDTO.convertCertificateToDTO(certificate);
     }
 
@@ -123,7 +125,7 @@ public class CertificateServiceImpl implements CertificateService {
     private void attachTags(Certificate certificate, Set<TagDTO> tags) {
         if (!ObjectUtils.isEmpty(tags)) {
             tags.forEach(
-                o -> certificate.getTags().add(tagDAO.find(mapperDTO.convertDTOToTag(o))));
+                tag -> certificate.getTags().add(tagDAO.find(mapperDTO.convertDTOToTag(tag))));
         }
     }
 }

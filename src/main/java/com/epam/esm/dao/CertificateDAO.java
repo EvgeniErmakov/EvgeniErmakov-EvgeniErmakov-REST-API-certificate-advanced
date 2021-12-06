@@ -10,7 +10,7 @@ public interface CertificateDAO extends CommonDAO<Certificate, Long> {
 
     List<Certificate> findAll(QuerySpecification querySpecification, Page page);
 
-    Certificate update(Certificate certificate, Certificate update);
+    Certificate update(Certificate certificate);
 
     Certificate applyPatch(Certificate certificate, Certificate update);
 }

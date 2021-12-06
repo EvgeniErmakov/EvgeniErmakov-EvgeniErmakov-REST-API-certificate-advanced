@@ -5,6 +5,7 @@ import com.epam.esm.model.entity.Certificate;
 import com.epam.esm.model.entity.Page;
 import com.epam.esm.model.entity.QuerySpecification;
 import com.epam.esm.model.entity.Tag;
+import javax.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ObjectUtils;
@@ -64,10 +65,8 @@ public class CertificateDAOImpl implements CertificateDAO {
     }
 
     @Override
-    public Certificate update(Certificate certificate, Certificate update) {
-        certificate.setPrice(update.getPrice());
-        certificate.setDuration(update.getDuration());
-        return certificate;
+    public Certificate update(Certificate certificate) {
+        return entityManager.merge(certificate);
     }
 
     @Override
