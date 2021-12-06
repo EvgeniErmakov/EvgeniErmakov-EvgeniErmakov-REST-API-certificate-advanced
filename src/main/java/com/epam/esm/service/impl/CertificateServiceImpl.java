@@ -123,7 +123,7 @@ public class CertificateServiceImpl implements CertificateService {
     private void attachTags(Certificate certificate, Set<TagDTO> tags) {
         if (!ObjectUtils.isEmpty(tags)) {
             tags.forEach(
-                o -> certificate.getTags().add(tagDAO.find(mapperDTO.convertDTOToTag(o))));
+                o -> certificate.getTags().add(tagDAO.findOrCreate(mapperDTO.convertDTOToTag(o))));
         }
     }
 }

@@ -42,7 +42,7 @@ public class TagServiceImpl implements TagService {
     @Override
     @Transactional
     public TagDTO create(TagDTO tagDTO) {
-        return mapperDTO.convertTagToDTO(tagDAO.find(mapperDTO.convertDTOToTag(tagDTO)));
+        return mapperDTO.convertTagToDTO(tagDAO.findOrCreate(mapperDTO.convertDTOToTag(tagDTO)));
     }
 
     @Override
