@@ -50,18 +50,11 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     public OrderDTO create(OrderDTO orderDTO) {
         orderDTO.setCost(new BigDecimal(0));
+        List<Certificate> certificates = new ArrayList<>();
         Order order = mapperDTO.convertDTOToOrder(orderDTO);
         User user = userDAO.findById(orderDTO.getUserId())
             .orElseThrow(() -> new UserNotFoundException(orderDTO.getUserId().toString()));
         order.setUser(user);
-        order.setCost(orderDTO.getCost());
-        order.setCertificates(getCertificates(orderDTO));
-        order = orderDAO.create(order);
-        return mapperDTO.convertOrderToDTO(order);
-    }
-
-    private List<Certificate> getCertificates(OrderDTO orderDTO) {
-        List<Certificate> certificates = new ArrayList<>();
         orderDTO.getCertificateId().forEach(id -> {
             Certificate certificate = certificateDAO.findById(id)
                 .orElseThrow(() -> new CertificateNotFoundException(id.toString()));
@@ -71,7 +64,10 @@ public class OrderServiceImpl implements OrderService {
             certificates.add(certificate);
             orderDTO.setCost(orderDTO.getCost().add(certificate.getPrice()));
         });
-        return certificates;
+        order.setCost(orderDTO.getCost());
+        order.setCertificates(certificates);
+        order = orderDAO.create(order);
+        return mapperDTO.convertOrderToDTO(order);
     }
 
     @Override
