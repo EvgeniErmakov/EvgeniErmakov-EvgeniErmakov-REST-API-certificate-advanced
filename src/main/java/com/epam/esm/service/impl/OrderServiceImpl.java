@@ -49,12 +49,20 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public OrderDTO create(OrderDTO orderDTO) {
-        orderDTO.setCost(new BigDecimal(0));
-        List<Certificate> certificates = new ArrayList<>();
         Order order = mapperDTO.convertDTOToOrder(orderDTO);
+        order.setCost(new BigDecimal(0));
         User user = userDAO.findById(orderDTO.getUserId())
             .orElseThrow(() -> new UserNotFoundException(orderDTO.getUserId().toString()));
+        List<Certificate> certificates = getListWithCertificates(orderDTO);
+        certificates.forEach(
+            certificate -> order.setCost(order.getCost().add(certificate.getPrice())));
         order.setUser(user);
+        order.setCertificates(certificates);
+        return mapperDTO.convertOrderToDTO(orderDAO.create(order));
+    }
+
+    private List<Certificate> getListWithCertificates(OrderDTO orderDTO) {
+        List<Certificate> certificates = new ArrayList<>();
         orderDTO.getCertificateId().forEach(id -> {
             Certificate certificate = certificateDAO.findById(id)
                 .orElseThrow(() -> new CertificateNotFoundException(id.toString()));
@@ -62,12 +70,8 @@ public class OrderServiceImpl implements OrderService {
                 throw new CertificateNotFoundException(id.toString());
             }
             certificates.add(certificate);
-            orderDTO.setCost(orderDTO.getCost().add(certificate.getPrice()));
         });
-        order.setCost(orderDTO.getCost());
-        order.setCertificates(certificates);
-        order = orderDAO.create(order);
-        return mapperDTO.convertOrderToDTO(order);
+        return certificates;
     }
 
     @Override
