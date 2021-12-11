@@ -1,4 +1,4 @@
-package com.epam.esm.model.entity;
+package com.epam.esm.controller.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

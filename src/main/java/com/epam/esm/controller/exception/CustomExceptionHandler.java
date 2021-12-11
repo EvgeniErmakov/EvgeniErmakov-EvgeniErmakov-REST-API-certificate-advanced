@@ -1,6 +1,6 @@
 package com.epam.esm.controller.exception;
 
-import com.epam.esm.model.entity.ErrorResponse;
+import com.epam.esm.controller.model.ErrorResponse;
 import com.epam.esm.model.exception.CustomServiceException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
