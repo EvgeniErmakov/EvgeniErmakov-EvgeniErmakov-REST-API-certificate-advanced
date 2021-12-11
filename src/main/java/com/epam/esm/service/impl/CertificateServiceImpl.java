@@ -9,7 +9,6 @@ import com.epam.esm.model.dto.PatchDTO;
 import com.epam.esm.model.dto.TagDTO;
 import com.epam.esm.model.entity.Certificate;
 import com.epam.esm.model.entity.Page;
-import com.epam.esm.model.entity.QuerySpecification;
 import com.epam.esm.model.exception.CertificateNotFoundException;
 import com.epam.esm.model.exception.OrderNotFoundException;
 import com.epam.esm.service.CertificateService;
@@ -65,7 +64,7 @@ public class CertificateServiceImpl implements CertificateService {
     @Override
     public List<CertificateDTO> findAll(ParametersSpecificationDTO querySpecificationDTO,
                                         Page page) {
-        QuerySpecification querySpecification = mapperDTO.convertDTOToQuery(querySpecificationDTO);
+        ParametersSpecificationDTO querySpecification = mapperDTO.convertDTOToQuery(querySpecificationDTO);
         return certificateDAO.findAll(querySpecification, page)
             .stream()
             .map(mapperDTO::convertCertificateToDTO)

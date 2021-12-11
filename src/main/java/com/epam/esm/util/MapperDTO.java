@@ -20,8 +20,8 @@ public class MapperDTO {
         return mapper.map(certificateDTO, Certificate.class);
     }
 
-    public QuerySpecification convertDTOToQuery(ParametersSpecificationDTO querySpecificationDTO) {
-        return mapper.map(querySpecificationDTO, QuerySpecification.class);
+    public ParametersSpecificationDTO convertDTOToQuery(ParametersSpecificationDTO querySpecificationDTO) {
+        return mapper.map(querySpecificationDTO, ParametersSpecificationDTO.class);
     }
 
     public TagDTO convertTagToDTO(Tag tag) {

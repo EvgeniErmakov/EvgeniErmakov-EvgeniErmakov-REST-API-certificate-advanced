@@ -1,11 +1,10 @@
 package com.epam.esm.dao.impl;
 
 import com.epam.esm.dao.CertificateDAO;
+import com.epam.esm.model.dto.ParametersSpecificationDTO;
 import com.epam.esm.model.entity.Certificate;
 import com.epam.esm.model.entity.Page;
-import com.epam.esm.model.entity.QuerySpecification;
 import com.epam.esm.model.entity.Tag;
-import javax.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ObjectUtils;
@@ -36,7 +35,7 @@ public class CertificateDAOImpl implements CertificateDAO {
     private static final boolean IS_ACTIVE_VALUE = true;
 
     @Override
-    public List<Certificate> findAll(QuerySpecification querySpecification, Page page) {
+    public List<Certificate> findAll(ParametersSpecificationDTO querySpecification, Page page) {
         CriteriaQuery<Certificate> criteriaQuery = createCriteriaQuery(
             querySpecification);
         return entityManager.createQuery(criteriaQuery)
@@ -87,7 +86,7 @@ public class CertificateDAOImpl implements CertificateDAO {
     }
 
     private CriteriaQuery<Certificate> createCriteriaQuery(
-        QuerySpecification specification) {
+        ParametersSpecificationDTO specification) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Certificate> criteriaQuery = criteriaBuilder.createQuery(Certificate.class);
         Root<Certificate> root = criteriaQuery.from(Certificate.class);
