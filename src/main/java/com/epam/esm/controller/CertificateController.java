@@ -73,8 +73,8 @@ public class CertificateController {
      */
     @PatchMapping(value = "/{id}")
     public CertificateDTO patch(@PathVariable @Min(MIN_ID) Long id, @Valid @RequestBody PatchDTO patchDTO) {
-        certificateService.applyPatch(id, patchDTO);
-        return ResponseAssembler.assembleCertificate(certificateService.findById(id));
+        CertificateDTO certificateDTO = certificateService.applyPatch(id, patchDTO);
+        return ResponseAssembler.assembleCertificate(certificateDTO);
     }
 
     /**
