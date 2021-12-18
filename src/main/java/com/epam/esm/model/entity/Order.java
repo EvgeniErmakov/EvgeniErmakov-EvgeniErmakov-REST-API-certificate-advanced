@@ -26,7 +26,7 @@ public class Order extends Auditable<String> {
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
     @JoinTable(
-        name = "order_has_gift_certificate",
+        name = "order_has_gift_certificate", schema = "module_4",
         joinColumns = @JoinColumn(name = "gift_order_id"),
         inverseJoinColumns = @JoinColumn(name = "gift_certificate_id"))
     private List<Certificate> certificates;

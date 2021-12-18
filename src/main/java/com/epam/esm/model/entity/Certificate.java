@@ -43,7 +43,7 @@ public class Certificate extends Auditable<String> {
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
     @JoinTable(
-        name = "relationship_certificates_and_tags",
+        name = "relationship_certificates_and_tags", schema = "module_4",
         joinColumns = @JoinColumn(name = "gift_certificate_id"),
         inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private Set<Tag> tags;
