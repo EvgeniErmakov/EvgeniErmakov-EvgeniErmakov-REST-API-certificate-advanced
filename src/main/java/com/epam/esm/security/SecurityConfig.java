@@ -5,6 +5,7 @@ import com.epam.esm.security.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,6 +19,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
     jsr250Enabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private static final String LOGIN_ENDPOINT = "/authentication/login";
+    private static final String SIGN_UP_ENDPOINT = "/users";
+    private static final String FIND_CERTIFICATES_ENDPOINT = "/certificates";
+    private static final String FIND_CERTIFICATE_BY_ID = "/certificates/{\\d+}";
 
     private final JwtTokenProvider jwtTokenProvider;
 
@@ -39,10 +44,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeRequests()
-            .antMatchers().anonymous()
-            .antMatchers().anonymous()
-            .antMatchers().permitAll()
-            .antMatchers().permitAll()
+            .antMatchers(HttpMethod.POST, LOGIN_ENDPOINT).anonymous()
+            .antMatchers(HttpMethod.POST, SIGN_UP_ENDPOINT).anonymous()
+            .antMatchers(HttpMethod.GET, FIND_CERTIFICATES_ENDPOINT).permitAll()
+            .antMatchers(HttpMethod.GET, FIND_CERTIFICATE_BY_ID).permitAll()
             .anyRequest().fullyAuthenticated()
             .and()
             .apply(new JwtConfigurer(jwtTokenProvider))
