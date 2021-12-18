@@ -16,7 +16,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "gift_order")
+@Entity
+@Table(name = "gift_order", schema = "module_4")
 public class Order extends Auditable<String> {
 
     @Id

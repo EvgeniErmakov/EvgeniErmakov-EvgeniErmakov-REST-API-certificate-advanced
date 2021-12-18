@@ -15,7 +15,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode
 @Entity
-@Table(name = "clientele", schema = "public")
+@Table(name = "clientele", schema = "module_4")
 public class User {
 
     @Id
