@@ -1,28 +1,42 @@
 package com.epam.esm.model.entity;
 
-import lombok.Data;
+import java.util.List;
 import lombok.EqualsAndHashCode;
-import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import javax.persistence.*;
-import java.util.Set;
+import lombok.Setter;
 
-@EqualsAndHashCode(exclude = "orders")
-@Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "clientele")
+@Getter
+@Setter
+@EqualsAndHashCode
+@Entity
+@Table(name = "clientele", schema = "public")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-    @Column(length = 300, nullable = false, unique = true)
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
 
-    @OneToMany(mappedBy = "user")
-    private Set<Order> orders;
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "login", unique = true)
+    private String login;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "role", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Order> orders;
 }
