@@ -1,7 +1,11 @@
-package com.epam.esm.jwt;
+package com.epam.esm.security.jwt;
 
-import com.epam.esm.user.Role;
+import com.epam.esm.model.dto.Role;
 import io.jsonwebtoken.*;
+import java.util.Base64;
+import java.util.Date;
+import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,11 +13,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
-import java.util.Base64;
-import java.util.Date;
 
 @Component
 @Slf4j
@@ -43,25 +42,26 @@ public class JwtTokenProvider {
         Date validity = new Date(now.getTime() + validityInMilliseconds);
 
         return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(now)
-                .setExpiration(validity)
-                .signWith(SignatureAlgorithm.HS256, secret)
-                .compact();
+            .setClaims(claims)
+            .setIssuedAt(now)
+            .setExpiration(validity)
+            .signWith(SignatureAlgorithm.HS256, secret)
+            .compact();
     }
 
     public Authentication getAuthentication(String token) {
         UserDetails userDetails = this.userDetailsService
-                .loadUserByUsername(getUsername(token));
-        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
+            .loadUserByUsername(getUsername(token));
+        return new UsernamePasswordAuthenticationToken(userDetails, "",
+            userDetails.getAuthorities());
     }
 
     public String getUsername(String token) {
         return Jwts.parser()
-                .setSigningKey(secret)
-                .parseClaimsJws(token)
-                .getBody()
-                .getSubject();
+            .setSigningKey(secret)
+            .parseClaimsJws(token)
+            .getBody()
+            .getSubject();
     }
 
     public String resolveToken(HttpServletRequest req) {
@@ -76,11 +76,11 @@ public class JwtTokenProvider {
     public boolean validateToken(String token) {
         try {
             Jws<Claims> claims = Jwts.parser()
-                    .setSigningKey(secret)
-                    .parseClaimsJws(token);
+                .setSigningKey(secret)
+                .parseClaimsJws(token);
             return !claims.getBody()
-                    .getExpiration()
-                    .before(new Date());
+                .getExpiration()
+                .before(new Date());
         } catch (JwtException | IllegalArgumentException e) {
             throw new JwtAuthenticationException("JWT token is expired or invalid");
         }

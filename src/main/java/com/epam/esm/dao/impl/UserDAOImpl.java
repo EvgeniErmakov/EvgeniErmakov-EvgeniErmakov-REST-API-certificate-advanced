@@ -3,6 +3,8 @@ package com.epam.esm.dao.impl;
 import com.epam.esm.dao.UserDAO;
 import com.epam.esm.model.entity.Page;
 import com.epam.esm.model.entity.User;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -18,6 +20,7 @@ import java.util.Optional;
 public class UserDAOImpl implements UserDAO {
 
     private final EntityManager entityManager;
+    private static final String SQL_FIND_USER_USE_LOGIN = "select u from User u where u.login=:login";
 
     @Override
     public List<User> findAll(Page page) {
@@ -44,5 +47,15 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void delete(User user) {
         throw new UnsupportedOperationException("method not supported yet");
+    }
+
+    public Optional<User> findUserByLogin(String login) {
+        TypedQuery<User> query = entityManager.createQuery(SQL_FIND_USER_USE_LOGIN, User.class);
+        query.setParameter("login", login);
+        try {
+            return Optional.ofNullable(query.getSingleResult());
+        } catch (NoResultException ex) {
+            return Optional.empty();
+        }
     }
 }

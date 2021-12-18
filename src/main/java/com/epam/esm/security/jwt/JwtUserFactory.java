@@ -1,21 +1,20 @@
-package com.epam.esm.jwt;
+package com.epam.esm.security.jwt;
 
-import com.epam.esm.user.Role;
-import com.epam.esm.user.User;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
+import com.epam.esm.model.entity.User;
+import com.epam.esm.model.dto.Role;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class JwtUserFactory {
 
     public static JwtUser create(User user) {
         return new JwtUser(
-                user.getId(),
-                user.getLogin(),
-                user.getPassword(),
-                mapToGrantedAuthorities(user.getRole()));
+            user.getId(),
+            user.getLogin(),
+            user.getPassword(),
+            mapToGrantedAuthorities(user.getRole()));
     }
 
     private static List<GrantedAuthority> mapToGrantedAuthorities(Role userRole) {

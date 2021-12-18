@@ -1,7 +1,8 @@
-package com.epam.esm.jwt;
+package com.epam.esm.security.jwt;
 
-import com.epam.esm.user.User;
-import com.epam.esm.user.UserDao;
+import com.epam.esm.dao.impl.UserDAOImpl;
+import com.epam.esm.model.entity.User;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,15 +10,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-
 @Service
 @Transactional
 public class JwtUserDetailsService implements UserDetailsService {
-    private final UserDao userDao;
+
+    private final UserDAOImpl userDao;
 
     @Autowired
-    public JwtUserDetailsService(UserDao userDao) {
+    public JwtUserDetailsService(UserDAOImpl userDao) {
         this.userDao = userDao;
     }
 
@@ -27,7 +27,6 @@ public class JwtUserDetailsService implements UserDetailsService {
         if (!optionalUser.isPresent()) {
             throw new UsernameNotFoundException("User with username: " + username + " not found");
         }
-        User user = optionalUser.get();
-        return JwtUserFactory.create(user);
+        return JwtUserFactory.create(optionalUser.get());
     }
 }
