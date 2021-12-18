@@ -1,5 +1,6 @@
 package com.epam.esm.model.entity;
 
+import com.epam.esm.model.dto.Role;
 import java.util.List;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
