@@ -3,6 +3,11 @@ package com.epam.esm.dao.impl;
 import com.epam.esm.dao.OrderDAO;
 import com.epam.esm.model.entity.Order;
 import com.epam.esm.model.entity.Page;
+import com.epam.esm.model.entity.User;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -16,12 +21,14 @@ public class OrderDAOImpl implements OrderDAO {
 
     private final EntityManager entityManager;
 
-    private static final String SELECT_ALL = "SELECT orders FROM gift_order orders";
-
     @Override
     public List<Order> findAll(Page page) {
-        return entityManager.createQuery(SELECT_ALL, Order.class)
-            .setFirstResult((page.getPage() * page.getSize()) - page.getSize())
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Order> query = cb.createQuery(Order.class);
+        Root<Order> root = query.from(Order.class);
+        query.select(root);
+        return entityManager.createQuery(query)
+            .setFirstResult(page.getPage() * page.getSize())
             .setMaxResults(page.getSize())
             .getResultList();
     }

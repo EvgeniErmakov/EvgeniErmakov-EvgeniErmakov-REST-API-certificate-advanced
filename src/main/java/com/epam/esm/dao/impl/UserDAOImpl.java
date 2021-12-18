@@ -3,6 +3,9 @@ package com.epam.esm.dao.impl;
 import com.epam.esm.dao.UserDAO;
 import com.epam.esm.model.entity.Page;
 import com.epam.esm.model.entity.User;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -16,11 +19,13 @@ public class UserDAOImpl implements UserDAO {
 
     private final EntityManager entityManager;
 
-    private static final String SELECT_ALL_USERS = "SELECT a FROM clientele a";
-
     @Override
     public List<User> findAll(Page page) {
-        return entityManager.createQuery(SELECT_ALL_USERS, User.class)
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<User> query = cb.createQuery(User.class);
+        Root<User> root = query.from(User.class);
+        query.select(root);
+        return entityManager.createQuery(query)
             .setFirstResult((page.getPage() * page.getSize()) - page.getSize())
             .setMaxResults(page.getSize())
             .getResultList();

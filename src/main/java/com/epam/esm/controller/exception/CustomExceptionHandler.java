@@ -25,7 +25,7 @@ import java.util.stream.StreamSupport;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @Slf4j
 public class CustomExceptionHandler {
-
+/*
     private final MessageSource messageSource;
 
     private static final int SERVER_ERROR_CODE = 500;
@@ -90,4 +90,6 @@ public class CustomExceptionHandler {
         response.setErrorStatusCode(errorCode);
         return response;
     }
+
+ */
 }

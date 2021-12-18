@@ -11,7 +11,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-@EqualsAndHashCode(exclude = "user")
 @Data
 @Builder
 @NoArgsConstructor
