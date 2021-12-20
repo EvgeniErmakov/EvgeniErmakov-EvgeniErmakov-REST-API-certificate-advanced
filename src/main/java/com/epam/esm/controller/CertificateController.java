@@ -34,6 +34,7 @@ public class CertificateController {
      * @return
      */
     @GetMapping(value = "/{id}")
+    @Secured({"ROLE_USER","ROLE_ADMIN"})
     public CertificateDTO findById(@PathVariable @Min(MIN_ID) Long id) {
         return ResponseAssembler.assembleCertificate(certificateService.findById(id));
     }

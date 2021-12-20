@@ -1,8 +1,13 @@
 package com.epam.esm.dao.impl;
 
 import com.epam.esm.dao.TagDAO;
+import com.epam.esm.model.entity.Certificate;
+import com.epam.esm.model.entity.Order;
 import com.epam.esm.model.entity.Page;
 import com.epam.esm.model.entity.Tag;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.hibernate.Session;
@@ -19,7 +24,6 @@ public class TagDAOImpl implements TagDAO {
 
     private final EntityManager entityManager;
     private static final String ATTRIBUTE_NAME = "name";
-    private static final String SELECT_ALL_TAGS = "SELECT tag FROM tag tag";
     private static final String FIND_BY_NAME = "select e from tag e where e.name = :name";
     private static final String SELECT_POPULAR_TAG = "select tag.id,tag.name FROM gift_order " +
         "INNER JOIN order_has_gift_certificate ON gift_order.id = gift_order_id " +
@@ -30,7 +34,11 @@ public class TagDAOImpl implements TagDAO {
 
     @Override
     public List<Tag> findAll(Page page) {
-        return entityManager.createQuery(SELECT_ALL_TAGS, Tag.class)
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Tag> query = cb.createQuery(Tag.class);
+        Root<Tag> root = query.from(Tag.class);
+        query.select(root);
+        return entityManager.createQuery(query)
             .setFirstResult((page.getPage() * page.getSize()) - page.getSize())
             .setMaxResults(page.getSize())
             .getResultList();
