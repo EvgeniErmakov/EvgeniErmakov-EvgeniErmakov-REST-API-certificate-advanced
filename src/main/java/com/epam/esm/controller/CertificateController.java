@@ -34,7 +34,6 @@ public class CertificateController {
      * @return
      */
     @GetMapping(value = "/{id}")
-    @Secured({"ROLE_USER","ROLE_ADMIN"})
     public CertificateDTO findById(@PathVariable @Min(MIN_ID) Long id) {
         return ResponseAssembler.assembleCertificate(certificateService.findById(id));
     }
@@ -55,6 +54,7 @@ public class CertificateController {
      */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @Secured("ROLE_ADMIN")
     public CertificateDTO create(@Valid @RequestBody CertificateDTO certificateDTO) {
         return ResponseAssembler.assembleCertificate(certificateService.create(certificateDTO));
     }
@@ -64,6 +64,7 @@ public class CertificateController {
      */
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @Secured({"ROLE_ADMIN"})
     public void delete(@PathVariable @Min(MIN_ID) Long id) {
         certificateService.delete(id);
     }
@@ -74,6 +75,7 @@ public class CertificateController {
      * @return
      */
     @PatchMapping(value = "/{id}")
+    @Secured({"ROLE_ADMIN"})
     public CertificateDTO patch(@PathVariable @Min(MIN_ID) Long id, @Valid @RequestBody PatchDTO patchDTO) {
         CertificateDTO certificateDTO = certificateService.applyPatch(id, patchDTO);
         return ResponseAssembler.assembleCertificate(certificateDTO);
@@ -85,6 +87,7 @@ public class CertificateController {
      * @return
      */
     @PutMapping(value = "/{id}")
+    @Secured({"ROLE_ADMIN"})
     public CertificateDTO update(@PathVariable @Min(MIN_ID) Long id, @Valid @RequestBody CertificateDTO certificateDTO) {
         certificateDTO.setId(id);
         certificateService.update(certificateDTO);

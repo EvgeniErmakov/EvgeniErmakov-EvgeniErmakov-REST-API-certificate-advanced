@@ -25,11 +25,12 @@ public class TagDAOImpl implements TagDAO {
     private final EntityManager entityManager;
     private static final String ATTRIBUTE_NAME = "name";
     private static final String FIND_BY_NAME = "select e from tag e where e.name = :name";
-    private static final String SELECT_POPULAR_TAG = "select tag.id,tag.name FROM gift_order " +
-        "INNER JOIN order_has_gift_certificate ON gift_order.id = gift_order_id " +
-        "INNER JOIN relationship_certificates_and_tags ON order_has_gift_certificate.gift_certificate_id = "
+    private static final String SELECT_POPULAR_TAG = "select tag.id, tag.name, tag.createdBy, tag.create_date_audit, tag.lastmodifiedby, tag.update_date_audit "
+        + "FROM module_4.gift_order " +
+        "INNER JOIN module_4.order_has_gift_certificate ON gift_order.id = gift_order_id " +
+        "INNER JOIN module_4.relationship_certificates_and_tags ON order_has_gift_certificate.gift_certificate_id = "
         + "relationship_certificates_and_tags.gift_certificate_id "
-        + "INNER JOIN tag ON tag_id = tag.id GROUP BY user_id,tag_id, tag.id ORDER BY sum(cost) DESC, "
+        + "INNER JOIN module_4.tag ON tag_id = tag.id GROUP BY user_id,tag_id, tag.id ORDER BY sum(cost) DESC, "
         + "count(tag_id) DESC LIMIT 1";
 
     @Override

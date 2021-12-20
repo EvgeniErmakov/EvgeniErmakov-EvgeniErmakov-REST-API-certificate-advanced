@@ -12,8 +12,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "tag", schema = "module_4")
+@Entity(name = "tag")
+@Table(schema = "module_4")
 public class Tag extends Auditable<String> {
 
     @Id

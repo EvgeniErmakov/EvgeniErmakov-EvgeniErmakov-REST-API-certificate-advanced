@@ -6,6 +6,7 @@ import com.epam.esm.service.TagService;
 import com.epam.esm.util.ResponseAssembler;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,6 +47,7 @@ public class TagController {
      */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @Secured({"ROLE_ADMIN"})
     public TagDTO create(@Valid @RequestBody TagDTO tagDTO) {
         return ResponseAssembler.assembleTag(service.create(tagDTO));
     }
@@ -55,6 +57,7 @@ public class TagController {
      */
     @DeleteMapping(value = "{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @Secured({"ROLE_ADMIN"})
     public void delete(@PathVariable @Min(MIN_ID) Long id) {
         service.delete(id);
     }

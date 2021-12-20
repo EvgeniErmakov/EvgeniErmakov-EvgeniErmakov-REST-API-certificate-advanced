@@ -8,6 +8,7 @@ import com.epam.esm.service.OrderService;
 import com.epam.esm.util.ResponseAssembler;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,6 +62,7 @@ public class OrderController {
      */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @Secured({"ROLE_USER","ROLE_ADMIN"})
     public OrderDTO create(@Valid @RequestBody OrderDTO orderDTO) {
         return ResponseAssembler.assembleOrder(orderService.create(orderDTO));
     }

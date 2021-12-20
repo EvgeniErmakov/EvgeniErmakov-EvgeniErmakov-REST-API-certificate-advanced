@@ -1,5 +1,6 @@
 package com.epam.esm.security;
 
+import com.epam.esm.model.dto.Role;
 import com.epam.esm.security.jwt.JwtConfigurer;
 import com.epam.esm.security.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeRequests()
-            .anyRequest().anonymous()
+            .anyRequest().permitAll()
             .and()
             .apply(new JwtConfigurer(jwtTokenProvider))
             .and().cors();
