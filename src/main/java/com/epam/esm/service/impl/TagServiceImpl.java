@@ -5,8 +5,7 @@ import com.epam.esm.dao.TagDAO;
 import com.epam.esm.model.dto.TagDTO;
 import com.epam.esm.model.entity.Certificate;
 import com.epam.esm.model.entity.Page;
-import com.epam.esm.model.exception.CertificateNotFoundException;
-import com.epam.esm.model.exception.TagNotFoundException;
+import com.epam.esm.model.exception.EntityNotFoundException;
 import com.epam.esm.service.TagService;
 import com.epam.esm.util.MapperDTO;
 import lombok.AllArgsConstructor;
@@ -36,7 +35,7 @@ public class TagServiceImpl implements TagService {
     @Override
     public TagDTO findById(Long id) {
         return mapperDTO.convertTagToDTO(tagDAO.findById(id)
-            .orElseThrow(() -> new TagNotFoundException(id.toString())));
+            .orElseThrow(() -> new EntityNotFoundException(id.toString())));
     }
 
     @Override
@@ -49,14 +48,14 @@ public class TagServiceImpl implements TagService {
     @Transactional
     public void delete(Long id) {
         tagDAO.delete(tagDAO.findById(id)
-            .orElseThrow(() -> new TagNotFoundException(id.toString())));
+            .orElseThrow(() -> new EntityNotFoundException(id.toString())));
     }
 
     @Override
     public List<TagDTO> findAllByCertificateId(Long id, Page page) {
         Optional<Certificate> optional = certificateDAO.findById(id);
         if (optional.isEmpty() || !optional.get().isActive()) {
-            throw new CertificateNotFoundException(id.toString());
+            throw new EntityNotFoundException(id.toString());
         }
         return optional.get().getTags()
             .stream()

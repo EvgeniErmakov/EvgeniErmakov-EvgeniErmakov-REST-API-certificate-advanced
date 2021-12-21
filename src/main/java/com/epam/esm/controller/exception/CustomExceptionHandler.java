@@ -1,7 +1,7 @@
 package com.epam.esm.controller.exception;
 
 import com.epam.esm.controller.model.ErrorResponse;
-import com.epam.esm.model.exception.CustomServiceException;
+import com.epam.esm.model.exception.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
@@ -41,8 +41,8 @@ public class CustomExceptionHandler {
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(CustomServiceException.class)
-    public ResponseEntity<Object> resourceNotFoundException(CustomServiceException exception, Locale locale) {
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<Object> resourceNotFoundException(EntityNotFoundException exception, Locale locale) {
         String message = messageSource.getMessage(exception.getErrorMessage(), new Object[]{}, locale);
         String errorMessage = message + DELIMITER + exception.getMessage();
         return new ResponseEntity<>(createErrorResponse(errorMessage, exception.getErrorCode()), HttpStatus.NOT_FOUND);

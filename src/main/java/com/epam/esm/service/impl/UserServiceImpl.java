@@ -3,7 +3,7 @@ package com.epam.esm.service.impl;
 import com.epam.esm.dao.UserDAO;
 import com.epam.esm.model.dto.UserDTO;
 import com.epam.esm.model.entity.Page;
-import com.epam.esm.model.exception.UserNotFoundException;
+import com.epam.esm.model.exception.EntityNotFoundException;
 import com.epam.esm.service.UserService;
 import com.epam.esm.util.MapperDTO;
 import lombok.AllArgsConstructor;
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO findById(Long id) {
         return mapperDTO.convertUserToDTO(userDAO.findById(id)
-                .orElseThrow(() -> new UserNotFoundException(id.toString())));
+                .orElseThrow(() -> new EntityNotFoundException(id.toString())));
     }
 
     @Override

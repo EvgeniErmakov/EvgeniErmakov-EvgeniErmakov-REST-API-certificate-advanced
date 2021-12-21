@@ -9,8 +9,7 @@ import com.epam.esm.model.dto.PatchDTO;
 import com.epam.esm.model.dto.TagDTO;
 import com.epam.esm.model.entity.Certificate;
 import com.epam.esm.model.entity.Page;
-import com.epam.esm.model.exception.CertificateNotFoundException;
-import com.epam.esm.model.exception.OrderNotFoundException;
+import com.epam.esm.model.exception.EntityNotFoundException;
 import com.epam.esm.service.CertificateService;
 import com.epam.esm.util.MapperDTO;
 import lombok.AllArgsConstructor;
@@ -54,9 +53,9 @@ public class CertificateServiceImpl implements CertificateService {
     @Override
     public CertificateDTO findById(Long id) {
         Certificate certificate = certificateDAO.findById(id)
-            .orElseThrow(() -> new CertificateNotFoundException(id.toString()));
+            .orElseThrow(() -> new EntityNotFoundException(id.toString()));
         if (!certificate.isActive()) {
-            throw new CertificateNotFoundException(id.toString());
+            throw new EntityNotFoundException(id.toString());
         }
         return mapperDTO.convertCertificateToDTO(certificate);
     }
@@ -76,7 +75,7 @@ public class CertificateServiceImpl implements CertificateService {
     public CertificateDTO update(CertificateDTO updateDTO) {
         Optional<Certificate> optional = certificateDAO.findById(updateDTO.getId());
         if (optional.isEmpty() || !optional.get().isActive()) {
-            throw new CertificateNotFoundException(updateDTO.getId().toString());
+            throw new EntityNotFoundException(updateDTO.getId().toString());
         }
         Certificate certificate = optional.get();
         Certificate update = mapperDTO.convertDTOToCertificate(updateDTO);
@@ -91,9 +90,9 @@ public class CertificateServiceImpl implements CertificateService {
     @Transactional
     public CertificateDTO applyPatch(Long id, PatchDTO patchDTO) {
         Certificate certificate = certificateDAO.findById(id)
-            .orElseThrow(() -> new CertificateNotFoundException(id.toString()));
+            .orElseThrow(() -> new EntityNotFoundException(id.toString()));
         if (!certificate.isActive()) {
-            throw new CertificateNotFoundException(id.toString());
+            throw new EntityNotFoundException(id.toString());
         }
         Certificate update = mapperDTO.convertPatchDTOToCertificate(patchDTO);
         certificate = certificateDAO.applyPatch(certificate, update);
@@ -104,7 +103,7 @@ public class CertificateServiceImpl implements CertificateService {
     public List<CertificateDTO> findAllByOrderId(Long id, Page page) {
         return orderDAO
             .findById(id)
-            .orElseThrow(() -> new OrderNotFoundException(id.toString()))
+            .orElseThrow(() -> new EntityNotFoundException(id.toString()))
             .getCertificates()
             .stream()
             .distinct()
@@ -118,7 +117,7 @@ public class CertificateServiceImpl implements CertificateService {
     @Transactional
     public void delete(Long id) {
         certificateDAO.delete(certificateDAO.findById(id)
-            .orElseThrow(() -> new CertificateNotFoundException(id.toString())));
+            .orElseThrow(() -> new EntityNotFoundException(id.toString())));
     }
 
     private void attachTags(Certificate certificate, Set<TagDTO> tags) {

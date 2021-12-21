@@ -5,7 +5,7 @@ import com.epam.esm.model.dto.CertificateDTO;;
 import com.epam.esm.model.dto.PatchDTO;
 import com.epam.esm.model.entity.Certificate;
 import com.epam.esm.model.entity.Page;
-import com.epam.esm.model.exception.CertificateNotFoundException;
+import com.epam.esm.model.exception.EntityNotFoundException;
 import com.epam.esm.service.impl.CertificateServiceImpl;
 import com.epam.esm.util.MapperDTO;
 import org.junit.jupiter.api.Assertions;
@@ -120,7 +120,7 @@ class CertificateServiceImplTest {
         certificateDTO.setId(id);
         certificate.setId(id);
         Mockito.when(certificateDAO.findById(id)).thenReturn(Optional.empty());
-        Assertions.assertThrows(CertificateNotFoundException.class,
+        Assertions.assertThrows(EntityNotFoundException.class,
             () -> certificateService.update(certificateDTO));
     }
 
@@ -128,7 +128,7 @@ class CertificateServiceImplTest {
     void deleteCertificateException() {
         Long id = 1L;
         Mockito.when(certificateDAO.findById(id)).thenReturn(Optional.empty());
-        Assertions.assertThrows(CertificateNotFoundException.class, () -> {
+        Assertions.assertThrows(EntityNotFoundException.class, () -> {
             certificateService.delete(id);
         });
     }
@@ -147,5 +147,4 @@ class CertificateServiceImplTest {
         verifyNoMoreInteractions(certificateDAO);
         Assertions.assertEquals(actual.getDuration(), certificateDTO.getDuration());
     }
-
 }
