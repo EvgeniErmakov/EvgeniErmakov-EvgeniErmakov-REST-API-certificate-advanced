@@ -8,9 +8,7 @@ import com.epam.esm.model.entity.Certificate;
 import com.epam.esm.model.entity.Order;
 import com.epam.esm.model.entity.Page;
 import com.epam.esm.model.entity.User;
-import com.epam.esm.model.exception.CertificateNotFoundException;
-import com.epam.esm.model.exception.OrderNotFoundException;
-import com.epam.esm.model.exception.UserNotFoundException;
+import com.epam.esm.model.exception.EntityNotFoundException;
 import com.epam.esm.service.OrderService;
 import com.epam.esm.util.MapperDTO;
 import lombok.AllArgsConstructor;
@@ -43,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderDTO findById(Long id) {
         return mapperDTO.convertOrderToDTO(orderDAO.findById(id)
-            .orElseThrow(() -> new OrderNotFoundException(id.toString())));
+            .orElseThrow(() -> new EntityNotFoundException(id.toString())));
     }
 
     @Override
@@ -52,7 +50,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = mapperDTO.convertDTOToOrder(orderDTO);
         order.setCost(new BigDecimal(0));
         User user = userDAO.findById(orderDTO.getUserId())
-            .orElseThrow(() -> new UserNotFoundException(orderDTO.getUserId().toString()));
+            .orElseThrow(() -> new EntityNotFoundException(orderDTO.getUserId().toString()));
         List<Certificate> certificates = getListWithCertificates(orderDTO);
         certificates.forEach(
             certificate -> order.setCost(order.getCost().add(certificate.getPrice())));
@@ -65,9 +63,9 @@ public class OrderServiceImpl implements OrderService {
         List<Certificate> certificates = new ArrayList<>();
         orderDTO.getCertificateId().forEach(id -> {
             Certificate certificate = certificateDAO.findById(id)
-                .orElseThrow(() -> new CertificateNotFoundException(id.toString()));
+                .orElseThrow(() -> new EntityNotFoundException(id.toString()));
             if (!certificate.isActive()) {
-                throw new CertificateNotFoundException(id.toString());
+                throw new EntityNotFoundException(id.toString());
             }
             certificates.add(certificate);
         });
@@ -82,7 +80,7 @@ public class OrderServiceImpl implements OrderService {
     public List<OrderDTO> findAllOrdersByUserId(Long id, Page page) {
         return userDAO
             .findById(id)
-            .orElseThrow(() -> new UserNotFoundException(id.toString()))
+            .orElseThrow(() -> new EntityNotFoundException(id.toString()))
             .getOrders()
             .stream()
             .distinct()

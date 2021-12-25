@@ -5,7 +5,6 @@ import com.epam.esm.model.dto.CertificateDTO;;
 import com.epam.esm.model.dto.PatchDTO;
 import com.epam.esm.model.entity.Certificate;
 import com.epam.esm.model.entity.Page;
-import com.epam.esm.model.exception.CertificateNotFoundException;
 import com.epam.esm.service.impl.CertificateServiceImpl;
 import com.epam.esm.util.MapperDTO;
 import org.junit.jupiter.api.Assertions;
