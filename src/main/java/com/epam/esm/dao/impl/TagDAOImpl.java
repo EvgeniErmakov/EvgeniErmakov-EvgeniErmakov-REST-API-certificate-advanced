@@ -1,13 +1,8 @@
 package com.epam.esm.dao.impl;
 
 import com.epam.esm.dao.TagDAO;
-import com.epam.esm.model.entity.Certificate;
-import com.epam.esm.model.entity.Order;
 import com.epam.esm.model.entity.Page;
 import com.epam.esm.model.entity.Tag;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.hibernate.Session;

@@ -3,11 +3,6 @@ package com.epam.esm.dao.impl;
 import com.epam.esm.dao.OrderDAO;
 import com.epam.esm.model.entity.Order;
 import com.epam.esm.model.entity.Page;
-import com.epam.esm.model.entity.User;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
