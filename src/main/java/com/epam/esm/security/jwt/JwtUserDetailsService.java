@@ -1,6 +1,7 @@
 package com.epam.esm.security.jwt;
 
 import com.epam.esm.dao.impl.UserDAOImpl;
+import com.epam.esm.model.dto.Role;
 import com.epam.esm.model.entity.User;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,10 @@ public class JwtUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> optionalUser = userDao.findUserByLogin(username);
-        if (!optionalUser.isPresent()) {
-            throw new UsernameNotFoundException("User with username: " + username + " not found");
+        if (optionalUser.isEmpty()) {
+            User user = new User();
+            user.setRole(Role.ROLE_ANONYMOUS);
+            return JwtUserFactory.create(user);
         }
         return JwtUserFactory.create(optionalUser.get());
     }

@@ -39,14 +39,15 @@ public class CustomExceptionHandler {
     private static final String USER_NOT_FOUND_ERROR = "AuthenticationError";
     private static final String DELIMITER = " ";
 
-    /*
+/*
         @ExceptionHandler(RuntimeException.class)
         public ResponseEntity<Object> serverError(Locale locale) {
             String message = messageSource.getMessage(SERVER_MESSAGE, new Object[]{}, locale);
             return new ResponseEntity<>(createErrorResponse(message, SERVER_ERROR_CODE),
+
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
-     */
+ */
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<Object> entityNotFoundException(EntityNotFoundException exception,
