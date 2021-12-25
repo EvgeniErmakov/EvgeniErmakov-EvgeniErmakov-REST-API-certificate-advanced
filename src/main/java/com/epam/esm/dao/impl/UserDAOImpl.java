@@ -17,6 +17,8 @@ import java.util.Optional;
 public class UserDAOImpl implements UserDAO {
 
     private final EntityManager entityManager;
+    private final String LOGIN_PARAMETER = "login";
+    private final String METHOD_NOT_SUPPORTED = "method not supported yet";
     private static final String SELECT_ALL_USERS = "SELECT a FROM clientele a";
     private static final String SQL_FIND_USER_USE_LOGIN = "select u from clientele u where u.login=:login";
 
@@ -35,17 +37,17 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User create(User user) {
-        throw new UnsupportedOperationException("method not supported yet");
+        throw new UnsupportedOperationException(METHOD_NOT_SUPPORTED);
     }
 
     @Override
     public void delete(User user) {
-        throw new UnsupportedOperationException("method not supported yet");
+        throw new UnsupportedOperationException(METHOD_NOT_SUPPORTED);
     }
 
     public Optional<User> findUserByLogin(String login) {
         TypedQuery<User> query = entityManager.createQuery(SQL_FIND_USER_USE_LOGIN, User.class);
-        query.setParameter("login", login);
+        query.setParameter(LOGIN_PARAMETER, login);
         try {
             return Optional.ofNullable(query.getSingleResult());
         } catch (NoResultException ex) {
