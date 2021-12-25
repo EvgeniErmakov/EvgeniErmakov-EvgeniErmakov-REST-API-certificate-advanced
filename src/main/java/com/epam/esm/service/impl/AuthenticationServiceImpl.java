@@ -32,8 +32,6 @@ public class AuthenticationServiceImpl {
     }
 
     public AuthenticationResultDTO getAuthenticationResult(AuthenticationRequestDTO requestDTO) {
-        System.out.println(requestDTO.getUsername());
-        System.out.println(requestDTO.getPassword());
         try {
             String username = requestDTO.getUsername();
             authenticationManager.authenticate(
