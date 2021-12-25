@@ -1,17 +1,31 @@
 package com.epam.esm.controller.exception;
 
+import com.epam.esm.controller.model.ErrorResponse;
+import com.epam.esm.model.exception.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.MessageSource;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @RestControllerAdvice
 @AllArgsConstructor
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @Slf4j
 public class CustomExceptionHandler {
-/*
+
     private final MessageSource messageSource;
 
     private static final int SERVER_ERROR_CODE = 500;
@@ -27,8 +41,8 @@ public class CustomExceptionHandler {
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(CustomServiceException.class)
-    public ResponseEntity<Object> resourceNotFoundException(CustomServiceException exception, Locale locale) {
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<Object> resourceNotFoundException(EntityNotFoundException exception, Locale locale) {
         String message = messageSource.getMessage(exception.getErrorMessage(), new Object[]{}, locale);
         String errorMessage = message + DELIMITER + exception.getMessage();
         return new ResponseEntity<>(createErrorResponse(errorMessage, exception.getErrorCode()), HttpStatus.NOT_FOUND);
@@ -76,6 +90,4 @@ public class CustomExceptionHandler {
         response.setErrorStatusCode(errorCode);
         return response;
     }
-
- */
 }
