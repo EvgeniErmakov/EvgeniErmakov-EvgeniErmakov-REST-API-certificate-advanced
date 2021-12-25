@@ -20,15 +20,12 @@ import java.util.Optional;
 public class UserDAOImpl implements UserDAO {
 
     private final EntityManager entityManager;
-    private static final String SQL_FIND_USER_USE_LOGIN = "select u from User u where u.login=:login";
+    private static final String SELECT_ALL_USERS = "SELECT a FROM clientele a";
+    private static final String SQL_FIND_USER_USE_LOGIN = "select u from clientele u where u.login=:login";
 
     @Override
     public List<User> findAll(Page page) {
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<User> query = cb.createQuery(User.class);
-        Root<User> root = query.from(User.class);
-        query.select(root);
-        return entityManager.createQuery(query)
+        return entityManager.createQuery(SELECT_ALL_USERS, User.class)
             .setFirstResult((page.getPage() * page.getSize()) - page.getSize())
             .setMaxResults(page.getSize())
             .getResultList();

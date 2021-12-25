@@ -24,6 +24,7 @@ public class TagDAOImpl implements TagDAO {
 
     private final EntityManager entityManager;
     private static final String ATTRIBUTE_NAME = "name";
+    private static final String SELECT_ALL_TAGS = "SELECT tag FROM tag tag";
     private static final String FIND_BY_NAME = "select e from tag e where e.name = :name";
     private static final String SELECT_POPULAR_TAG = "select tag.id, tag.name, tag.createdBy, tag.create_date_audit, tag.lastmodifiedby, tag.update_date_audit "
         + "FROM module_4.gift_order " +
@@ -35,11 +36,7 @@ public class TagDAOImpl implements TagDAO {
 
     @Override
     public List<Tag> findAll(Page page) {
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Tag> query = cb.createQuery(Tag.class);
-        Root<Tag> root = query.from(Tag.class);
-        query.select(root);
-        return entityManager.createQuery(query)
+        return entityManager.createQuery(SELECT_ALL_TAGS, Tag.class)
             .setFirstResult((page.getPage() * page.getSize()) - page.getSize())
             .setMaxResults(page.getSize())
             .getResultList();

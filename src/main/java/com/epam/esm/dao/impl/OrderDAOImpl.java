@@ -18,6 +18,7 @@ import java.util.Optional;
 @Repository
 @AllArgsConstructor
 public class OrderDAOImpl implements OrderDAO {
+
     private static final String SELECT_ALL = "SELECT orders FROM gift_order orders";
     private final EntityManager entityManager;
 
