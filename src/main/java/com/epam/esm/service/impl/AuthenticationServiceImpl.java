@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthenticationServiceImpl {
 
+    private final String INVALID_USERNAME_OR_PASSWORD_MESSAGE = "Invalid username or password";
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider jwtTokenProvider;
     private final UserDAO userDAO;
@@ -37,11 +38,12 @@ public class AuthenticationServiceImpl {
             authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(username, requestDTO.getPassword()));
             User user = userDAO.findUserByLogin(username)
-                .orElseThrow(() -> new BadCredentialsException("Invalid username or password"));
+                .orElseThrow(
+                    () -> new BadCredentialsException(INVALID_USERNAME_OR_PASSWORD_MESSAGE));
             String token = jwtTokenProvider.createToken(username, user.getRole());
             return new AuthenticationResultDTO(token, validityInMilliseconds);
         } catch (AuthenticationException e) {
-            throw new BadCredentialsException("Invalid username or password");
+            throw new BadCredentialsException(INVALID_USERNAME_OR_PASSWORD_MESSAGE);
         }
     }
 }

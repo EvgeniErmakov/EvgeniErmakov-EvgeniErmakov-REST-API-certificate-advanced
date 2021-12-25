@@ -90,6 +90,7 @@ public class ResponseAssembler {
     }
 
     private static UserDTO mapUser(UserDTO userDTO) {
-        return userDTO.add(linkTo(methodOn(UserController.class).findById(userDTO.getId())).withSelfRel());
+        return userDTO.add(
+            linkTo(methodOn(UserController.class).findById(userDTO.getId())).withSelfRel());
     }
 }
