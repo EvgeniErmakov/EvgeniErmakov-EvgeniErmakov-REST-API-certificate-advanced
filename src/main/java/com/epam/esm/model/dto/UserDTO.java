@@ -38,7 +38,7 @@ public class UserDTO extends RepresentationModel<UserDTO> {
 
     @NonNull
     @NotBlank
-    @Size(min = 5, max = 15)
+    @Size(min = 1, max = 15)
     private String login;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
