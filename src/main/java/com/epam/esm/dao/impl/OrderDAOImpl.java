@@ -18,17 +18,13 @@ import java.util.Optional;
 @Repository
 @AllArgsConstructor
 public class OrderDAOImpl implements OrderDAO {
-
+    private static final String SELECT_ALL = "SELECT orders FROM gift_order orders";
     private final EntityManager entityManager;
 
     @Override
     public List<Order> findAll(Page page) {
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Order> query = cb.createQuery(Order.class);
-        Root<Order> root = query.from(Order.class);
-        query.select(root);
-        return entityManager.createQuery(query)
-            .setFirstResult(page.getPage() * page.getSize())
+        return entityManager.createQuery(SELECT_ALL, Order.class)
+            .setFirstResult((page.getPage() * page.getSize()) - page.getSize())
             .setMaxResults(page.getSize())
             .getResultList();
     }

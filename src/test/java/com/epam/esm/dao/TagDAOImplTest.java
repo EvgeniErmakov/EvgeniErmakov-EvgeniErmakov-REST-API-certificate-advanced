@@ -56,6 +56,6 @@ class TagDAOImplTest {
     @Transactional
     void findMostPopularTag() {
         String actual = tagDAO.findMostPopularTag().getName();
-        Assertions.assertEquals("massage", actual);
+        Assertions.assertEquals("SPA", actual);
     }
 }

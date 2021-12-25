@@ -46,7 +46,7 @@ class OrderDAOImplTest {
     void createValid() {
         Order orderTest = Order.builder()
             .certificates(new ArrayList<>())
-            .user(User.builder().id(1L).name("Dzmitry").build())
+            .user(User.builder().id(1L).firstName("Dzmitry").build())
             .cost(new BigDecimal(500))
             .build();
 

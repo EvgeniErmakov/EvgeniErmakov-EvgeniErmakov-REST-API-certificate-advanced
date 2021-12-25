@@ -39,7 +39,7 @@ class UserServiceImplTest {
 
     @BeforeEach
     public void initUser() {
-        user = User.builder().name("Zhenya").build();
+        user = User.builder().firstName("Zhenya").build();
     }
 
     @Test

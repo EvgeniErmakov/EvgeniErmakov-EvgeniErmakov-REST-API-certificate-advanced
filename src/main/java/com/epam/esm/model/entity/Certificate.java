@@ -15,8 +15,8 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "gift_certificate", schema = "module_4")
+@Entity(name = "gift_certificate")
+@Table(schema = "module_4")
 public class Certificate extends Auditable<String> {
 
     @Id

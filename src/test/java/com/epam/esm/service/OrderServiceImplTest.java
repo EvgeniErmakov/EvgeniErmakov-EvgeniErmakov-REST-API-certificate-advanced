@@ -97,7 +97,7 @@ class OrderServiceImplTest {
     @Test
     void findAllOrdersByUserId() {
         Long id = 1L;
-        User user = User.builder().orders(new HashSet<>()).build();
+        User user = User.builder().orders(new ArrayList<>()).build();
         Mockito.when(userDAO.findById(id)).thenReturn(Optional.of(user));
         List<OrderDTO> actual = orderService.findAllOrdersByUserId(id, new Page());
         Assertions.assertTrue(actual.isEmpty());

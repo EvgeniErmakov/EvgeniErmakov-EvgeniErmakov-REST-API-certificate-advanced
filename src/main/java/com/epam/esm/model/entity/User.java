@@ -2,6 +2,7 @@ package com.epam.esm.model.entity;
 
 import com.epam.esm.model.dto.Role;
 import java.util.List;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,9 +14,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 @EqualsAndHashCode
-@Entity
-@Table(name = "clientele", schema = "module_4")
+@Entity(name = "clientele")
+@Table(schema = "module_4")
 public class User {
 
     @Id

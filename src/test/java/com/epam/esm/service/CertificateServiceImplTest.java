@@ -147,5 +147,4 @@ class CertificateServiceImplTest {
         verifyNoMoreInteractions(certificateDAO);
         Assertions.assertEquals(actual.getDuration(), certificateDTO.getDuration());
     }
-
 }

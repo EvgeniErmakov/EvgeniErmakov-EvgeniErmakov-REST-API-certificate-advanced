@@ -35,6 +35,6 @@ class UserDAOImplTest {
     void findUserById() {
         Long id = 1L;
         Optional<User> actual = userDAO.findById(id);
-        Assertions.assertEquals("Zhenya", actual.get().getName());
+        Assertions.assertEquals("Zhenya", actual.get().getFirstName());
     }
 }
