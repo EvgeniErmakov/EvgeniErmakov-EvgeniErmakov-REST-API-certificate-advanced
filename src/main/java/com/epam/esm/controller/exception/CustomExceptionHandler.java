@@ -30,7 +30,6 @@ import java.util.stream.StreamSupport;
 public class CustomExceptionHandler {
 
     private final MessageSource messageSource;
-
     private static final int SERVER_ERROR_CODE = 500;
     private static final int AUTHENTICATION_ERROR_CODE = 401;
     private static final int BIND_EXCEPTION_ERROR_CODE = 102;
@@ -38,16 +37,6 @@ public class CustomExceptionHandler {
     private static final String SERVER_MESSAGE = "ServerError";
     private static final String USER_NOT_FOUND_ERROR = "AuthenticationError";
     private static final String DELIMITER = " ";
-
-/*
-        @ExceptionHandler(RuntimeException.class)
-        public ResponseEntity<Object> serverError(Locale locale) {
-            String message = messageSource.getMessage(SERVER_MESSAGE, new Object[]{}, locale);
-            return new ResponseEntity<>(createErrorResponse(message, SERVER_ERROR_CODE),
-
-                    HttpStatus.INTERNAL_SERVER_ERROR);
-        }
- */
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<Object> entityNotFoundException(EntityNotFoundException exception,
@@ -110,4 +99,12 @@ public class CustomExceptionHandler {
         return new ResponseEntity<>(createErrorResponse(message, AUTHENTICATION_ERROR_CODE),
             HttpStatus.UNAUTHORIZED);
     }
+/*
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<Object> serverError(Locale locale) {
+        String message = messageSource.getMessage(SERVER_MESSAGE, new Object[]{}, locale);
+        return new ResponseEntity<>(createErrorResponse(message, SERVER_ERROR_CODE),
+            HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+ */
 }
