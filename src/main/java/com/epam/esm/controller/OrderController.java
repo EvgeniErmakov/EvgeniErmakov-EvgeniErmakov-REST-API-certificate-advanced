@@ -21,12 +21,13 @@ import java.util.List;
 @AllArgsConstructor
 @Validated
 public class OrderController {
+
     private final OrderService orderService;
     private final CertificateService certificateService;
-
     private static final int MIN_ID = 1;
 
     /**
+     *
      * @param id
      * @return
      */
@@ -36,6 +37,7 @@ public class OrderController {
     }
 
     /**
+     *
      * @param page
      * @return
      */
@@ -45,24 +47,26 @@ public class OrderController {
     }
 
     /**
+     *
      * @param id
      * @param page
      * @return
      */
     @GetMapping(value = "/{id}/certificates")
     public List<CertificateDTO> findAllByOrderId(@PathVariable @Min(MIN_ID) Long id,
-                                                 @Valid Page page) {
+        @Valid Page page) {
         return ResponseAssembler.assembleCertificates(
-                certificateService.findAllByOrderId(id, page));
+            certificateService.findAllByOrderId(id, page));
     }
 
     /**
+     *
      * @param orderDTO
      * @return
      */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @Secured({"ROLE_USER","ROLE_ADMIN"})
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     public OrderDTO create(@Valid @RequestBody OrderDTO orderDTO) {
         return ResponseAssembler.assembleOrder(orderService.create(orderDTO));
     }

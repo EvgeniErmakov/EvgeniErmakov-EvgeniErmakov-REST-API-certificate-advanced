@@ -26,10 +26,10 @@ public class CertificateController {
 
     private final CertificateService certificateService;
     private final TagService tagService;
-
     private static final int MIN_ID = 1;
 
     /**
+     *
      * @param id
      * @return
      */
@@ -39,16 +39,19 @@ public class CertificateController {
     }
 
     /**
+     *
      * @param parameters
      * @param page
      * @return
      */
     @GetMapping
-    public List<CertificateDTO> findAllByFilter(ParametersSpecificationDTO parameters, @Valid Page page) {
+    public List<CertificateDTO> findAllByFilter(ParametersSpecificationDTO parameters,
+        @Valid Page page) {
         return ResponseAssembler.assembleCertificates(certificateService.findAll(parameters, page));
     }
 
     /**
+     *
      * @param certificateDTO
      * @return
      */
@@ -60,6 +63,7 @@ public class CertificateController {
     }
 
     /**
+     *
      * @param id
      */
     @DeleteMapping(value = "/{id}")
@@ -70,37 +74,43 @@ public class CertificateController {
     }
 
     /**
+     *
      * @param id
      * @param patchDTO
      * @return
      */
     @PatchMapping(value = "/{id}")
     @Secured({"ROLE_ADMIN"})
-    public CertificateDTO patch(@PathVariable @Min(MIN_ID) Long id, @Valid @RequestBody PatchDTO patchDTO) {
+    public CertificateDTO patch(@PathVariable @Min(MIN_ID) Long id,
+        @Valid @RequestBody PatchDTO patchDTO) {
         CertificateDTO certificateDTO = certificateService.applyPatch(id, patchDTO);
         return ResponseAssembler.assembleCertificate(certificateDTO);
     }
 
     /**
+     *
      * @param id
      * @param certificateDTO
      * @return
      */
     @PutMapping(value = "/{id}")
     @Secured({"ROLE_ADMIN"})
-    public CertificateDTO update(@PathVariable @Min(MIN_ID) Long id, @Valid @RequestBody CertificateDTO certificateDTO) {
+    public CertificateDTO update(@PathVariable @Min(MIN_ID) Long id,
+        @Valid @RequestBody CertificateDTO certificateDTO) {
         certificateDTO.setId(id);
         certificateService.update(certificateDTO);
         return ResponseAssembler.assembleCertificate(certificateService.findById(id));
     }
 
     /**
+     *
      * @param id
      * @param page
      * @return
      */
     @GetMapping(value = "/{id}/tags")
-    public List<TagDTO> findTagsByCertificateId(@PathVariable @Min(MIN_ID) Long id, @Valid Page page) {
+    public List<TagDTO> findTagsByCertificateId(@PathVariable @Min(MIN_ID) Long id,
+        @Valid Page page) {
         return ResponseAssembler.assembleTags(tagService.findAllByCertificateId(id, page));
     }
 }
