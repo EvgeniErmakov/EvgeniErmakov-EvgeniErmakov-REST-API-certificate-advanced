@@ -2,7 +2,6 @@ package com.epam.esm.controller.exception;
 
 import com.epam.esm.controller.model.ErrorResponse;
 import com.epam.esm.model.exception.EntityNotFoundException;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
@@ -13,8 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.validation.ConstraintViolation;
@@ -27,6 +26,7 @@ import java.util.stream.StreamSupport;
 @AllArgsConstructor
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @Slf4j
+@ControllerAdvice
 public class CustomExceptionHandler {
 
     private final MessageSource messageSource;
@@ -38,17 +38,18 @@ public class CustomExceptionHandler {
     private static final String SERVER_MESSAGE = "ServerError";
     private static final String USER_NOT_FOUND_ERROR = "AuthenticationError";
     private static final String DELIMITER = " ";
-/*
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<Object> serverError(Locale locale) {
-        String message = messageSource.getMessage(SERVER_MESSAGE, new Object[]{}, locale);
-        return new ResponseEntity<>(createErrorResponse(message, SERVER_ERROR_CODE),
-                HttpStatus.INTERNAL_SERVER_ERROR);
-    }
- */
+
+    /*
+        @ExceptionHandler(RuntimeException.class)
+        public ResponseEntity<Object> serverError(Locale locale) {
+            String message = messageSource.getMessage(SERVER_MESSAGE, new Object[]{}, locale);
+            return new ResponseEntity<>(createErrorResponse(message, SERVER_ERROR_CODE),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+     */
 
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<Object> resourceNotFoundException(EntityNotFoundException exception,
+    public ResponseEntity<Object> entityNotFoundException(EntityNotFoundException exception,
         Locale locale) {
         String message = messageSource.getMessage(exception.getErrorMessage(), new Object[]{},
             locale);
