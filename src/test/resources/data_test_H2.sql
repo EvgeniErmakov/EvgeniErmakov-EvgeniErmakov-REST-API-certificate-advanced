@@ -16,7 +16,6 @@ CREATE TABLE IF NOT EXISTS module_4.gift_certificate
     price             DECIMAL(10, 2) NOT NULL
 );
 
-
 INSERT INTO module_4.gift_certificate (id, createdBy, create_date_audit, lastmodifiedby,
                                        update_date_audit,
                                        create_date, description, duration, is_active,
@@ -114,7 +113,6 @@ VALUES (1, 'null', '2021-10-30T10:10:10', 'null', '2021-09-30T10:10:10', 5,
         1),
        (2, 'null', '2021-10-30T10:10:10', 'null', '2021-09-30T10:10:10', 50,
         '2021-10-30T10:10:10-03:00', 2);
-
 
 CREATE TABLE module_4.order_has_gift_certificate
 (
