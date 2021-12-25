@@ -24,6 +24,7 @@ import javax.validation.constraints.Size;
 @Setter
 @EqualsAndHashCode(callSuper = false)
 public class UserDTO extends RepresentationModel<UserDTO> {
+
     private long id;
 
     @NonNull

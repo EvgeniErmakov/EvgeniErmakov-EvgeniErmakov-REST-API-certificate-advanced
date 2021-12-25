@@ -30,5 +30,4 @@ public abstract class Auditable<U> {
     @LastModifiedDate
     @Column(name = "update_date_audit")
     protected Timestamp lastModifiedDateTime;
-
 }
