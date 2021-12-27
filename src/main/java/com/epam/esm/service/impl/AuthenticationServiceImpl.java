@@ -25,8 +25,7 @@ public class AuthenticationServiceImpl {
 
     @Autowired
     public AuthenticationServiceImpl(AuthenticationManager authenticationManager,
-        JwtTokenProvider jwtTokenProvider,
-        UserDAO userDAO) {
+        JwtTokenProvider jwtTokenProvider, UserDAO userDAO) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.userDAO = userDAO;
