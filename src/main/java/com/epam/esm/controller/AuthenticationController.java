@@ -23,7 +23,7 @@ public class AuthenticationController {
     }
 
     @PostMapping(value = "/login")
-    public AuthenticationResultDTO login(@RequestBody @Valid AuthenticationRequestDTO requestDto) {
-        return authenticationService.getAuthenticationResult(requestDto);
+    public AuthenticationResultDTO login(@RequestBody @Valid AuthenticationRequestDTO requestDTO) {
+        return authenticationService.getAuthenticationResult(requestDTO);
     }
 }
