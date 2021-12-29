@@ -42,7 +42,9 @@ public class MapperDTO {
     }
 
     public OrderDTO convertOrderToDTO(Order order) {
-        return mapper.map(order, OrderDTO.class);
+        OrderDTO orderDTO= mapper.map(order, OrderDTO.class);
+        orderDTO.setUserId(order.getUser().getId());
+        return orderDTO;
     }
 
     public Order convertDTOToOrder(OrderDTO orderDTO) {

@@ -71,8 +71,9 @@ public class ResponseAssembler {
             .withRel("list or certificates"));
         orderDTO.add(
             linkTo(methodOn(UserController.class).findById(orderDTO.getUserId())).withRel("user"));
-        orderDTO.setCertificateId(null);
-        orderDTO.setUserId(null);
+        orderDTO.add(
+            WebMvcLinkBuilder.linkTo(methodOn(OrderController.class).findById(orderDTO.getId()))
+                .withSelfRel());
         return orderDTO;
     }
 
