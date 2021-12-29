@@ -49,20 +49,15 @@ public class CustomExceptionHandler {
     }
 
     @ExceptionHandler(BindException.class)
-    public ResponseEntity<Object> bindExceptionException(BindException exception, Locale locale) {
+    public ResponseEntity<Object> bindExceptionException(BindException exception) {
         CustomErrorResponse customErrorResponse = CustomErrorResponse.builder()
-            .errorMessage(exception.getBindingResult().getAllErrors()
+            .errorMessage( "Неверно заполнены поля " + (exception.getBindingResult().getAllErrors()
                 .stream()
-                .collect(
-                    Collectors.toMap(
-                        error -> ((FieldError) error).getField(),
-                        error -> messageSource.getMessage(error, locale),
-                        (existing, replacement) -> existing
-                    )
-                )
-            )
-            .errorStatusCode(BIND_EXCEPTION_ERROR_CODE)
-            .build();
+                .map(x -> ((FieldError) x).getField())
+                .collect(Collectors.joining(", "))))
+                .errorStatusCode(BIND_EXCEPTION_ERROR_CODE)
+                .build();
+
         return new ResponseEntity<>(customErrorResponse, HttpStatus.BAD_REQUEST);
     }
 
@@ -79,7 +74,8 @@ public class CustomExceptionHandler {
                         ConstraintViolation::getMessage,
                         (existing, replacement) -> existing
                     )
-                ))
+                )
+                .toString())
             .errorStatusCode(CONSTRAINT_VIOLATION_ERROR_CODE)
             .build();
         return new ResponseEntity<>(customErrorResponse, HttpStatus.BAD_REQUEST);

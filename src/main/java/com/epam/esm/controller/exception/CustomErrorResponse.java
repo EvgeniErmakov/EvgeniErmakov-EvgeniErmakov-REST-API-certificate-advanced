@@ -8,6 +8,6 @@ import java.util.Map;
 @Builder
 @Data
 public class CustomErrorResponse {
-    private Map<Object, String> errorMessage;
+    private String errorMessage;
     private int errorStatusCode;
 }
