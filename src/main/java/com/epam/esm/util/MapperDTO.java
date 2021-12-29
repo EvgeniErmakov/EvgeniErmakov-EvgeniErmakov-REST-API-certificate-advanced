@@ -37,6 +37,10 @@ public class MapperDTO {
         return mapper.map(user, UserDTO.class);
     }
 
+    public User convertUserDTOtoUser(UserDTO userDTO) {
+        return mapper.map(userDTO, User.class);
+    }
+
     public OrderDTO convertOrderToDTO(Order order) {
         return mapper.map(order, OrderDTO.class);
     }

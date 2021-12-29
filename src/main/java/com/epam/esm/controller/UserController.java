@@ -7,10 +7,14 @@ import com.epam.esm.service.OrderService;
 import com.epam.esm.service.UserService;
 import com.epam.esm.util.ResponseAssembler;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -54,5 +58,11 @@ public class UserController {
     @GetMapping(value = "/{id}/orders")
     public List<OrderDTO> findUserOrders(@PathVariable @Min(MIN_ID) Long id, @Valid Page page) {
         return ResponseAssembler.assembleOrders(orderService.findAllOrdersByUserId(id, page));
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public UserDTO create(@Valid @RequestBody UserDTO userDTO) {
+        return ResponseAssembler.assembleOrders(userService.create(userDTO));
     }
 }

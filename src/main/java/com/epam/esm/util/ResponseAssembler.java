@@ -93,4 +93,11 @@ public class ResponseAssembler {
         return userDTO.add(
             linkTo(methodOn(UserController.class).findById(userDTO.getId())).withSelfRel());
     }
+
+    public UserDTO assembleOrders(UserDTO userDTO) {
+        userDTO.add(linkTo(methodOn(UserController.class)
+            .findById(userDTO.getId()))
+            .withSelfRel());
+        return userDTO;
+    }
 }

@@ -2,6 +2,7 @@ package com.epam.esm.controller.exception;
 
 import com.epam.esm.controller.model.ErrorResponse;
 import com.epam.esm.model.exception.EntityNotFoundException;
+import com.epam.esm.model.exception.UserAlreadyRegisteredException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
@@ -94,6 +95,16 @@ public class CustomExceptionHandler {
         String message = messageSource.getMessage(USER_NOT_FOUND_ERROR, new Object[]{}, locale);
         return new ResponseEntity<>(createErrorResponse(message, AUTHENTICATION_ERROR_CODE),
             HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(UserAlreadyRegisteredException.class)
+    public ResponseEntity<Object> userAlreadyRegisteredException(UserAlreadyRegisteredException exception,
+        Locale locale) {
+        String message = messageSource.getMessage(exception.getErrorMessage(), new Object[]{},
+            locale);
+        String errorMessage = message + DELIMITER + exception.getMessage();
+        return new ResponseEntity<>(createErrorResponse(errorMessage, exception.getErrorCode()),
+            HttpStatus.NOT_FOUND);
     }
 /*
     @ExceptionHandler(RuntimeException.class)

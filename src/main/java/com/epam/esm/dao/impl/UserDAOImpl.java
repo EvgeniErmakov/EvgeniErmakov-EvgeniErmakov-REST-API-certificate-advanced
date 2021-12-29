@@ -37,7 +37,8 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User create(User user) {
-        throw new UnsupportedOperationException(METHOD_NOT_SUPPORTED);
+        entityManager.persist(user);
+        return user;
     }
 
     @Override
