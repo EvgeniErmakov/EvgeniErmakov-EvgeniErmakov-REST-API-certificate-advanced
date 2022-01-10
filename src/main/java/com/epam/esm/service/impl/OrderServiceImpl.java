@@ -49,7 +49,9 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public OrderDTO create(OrderDTO orderDTO, JwtUser jwtUser) {
-        if(!Objects.equals(jwtUser.getId(), orderDTO.getUserId())){
+        boolean isAdmin = jwtUser.getAuthorities().stream()
+            .anyMatch(x -> x.getAuthority().equals("ROLE_ADMIN"));
+        if(!Objects.equals(jwtUser.getId(), orderDTO.getUserId()) && !isAdmin){
             throw new UserException("You cannot buy a certificate for another user");
         }
         Order order = mapperDTO.convertDTOToOrder(orderDTO);
