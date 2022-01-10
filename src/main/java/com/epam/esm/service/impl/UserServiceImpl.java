@@ -4,7 +4,7 @@ import com.epam.esm.dao.UserDAO;
 import com.epam.esm.model.dto.UserDTO;
 import com.epam.esm.model.entity.Page;
 import com.epam.esm.model.exception.EntityNotFoundException;
-import com.epam.esm.model.exception.UserAlreadyRegisteredException;
+import com.epam.esm.model.exception.UserException;
 import com.epam.esm.service.UserService;
 import com.epam.esm.util.MapperDTO;
 import java.util.Optional;
@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
             userDAO.create(user);
             return mapperDTO.convertUserToDTO(user);
         } else {
-            throw new UserAlreadyRegisteredException(userDTO.getLogin());
+            throw new UserException(userDTO.getLogin() + " USER IS ALREADY REGISTERED");
         }
     }
 

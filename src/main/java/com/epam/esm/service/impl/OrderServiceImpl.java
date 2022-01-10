@@ -9,8 +9,11 @@ import com.epam.esm.model.entity.Order;
 import com.epam.esm.model.entity.Page;
 import com.epam.esm.model.entity.User;
 import com.epam.esm.model.exception.EntityNotFoundException;
+import com.epam.esm.model.exception.UserException;
+import com.epam.esm.security.jwt.JwtUser;
 import com.epam.esm.service.OrderService;
 import com.epam.esm.util.MapperDTO;
+import java.util.Objects;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,7 +48,10 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public OrderDTO create(OrderDTO orderDTO) {
+    public OrderDTO create(OrderDTO orderDTO, JwtUser jwtUser) {
+        if(!Objects.equals(jwtUser.getId(), orderDTO.getUserId())){
+            throw new UserException("You cannot buy a certificate for another user");
+        }
         Order order = mapperDTO.convertDTOToOrder(orderDTO);
         order.setCost(new BigDecimal(0));
         User user = userDAO.findById(orderDTO.getUserId())
@@ -69,10 +75,6 @@ public class OrderServiceImpl implements OrderService {
             certificates.add(certificate);
         });
         return certificates;
-    }
-
-    @Override
-    public void delete(Long id) {
     }
 
     @Override
