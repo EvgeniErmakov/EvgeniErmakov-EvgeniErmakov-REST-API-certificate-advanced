@@ -3,6 +3,7 @@ package com.epam.esm.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -12,7 +13,8 @@ import java.time.ZonedDateTime;
 import java.util.Set;
 
 @Data
-@Builder
+@EqualsAndHashCode(callSuper = true)
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "gift_certificate")
@@ -52,6 +54,7 @@ public class Certificate extends Auditable<String> {
     private Set<Order> orders;
 
     @Column(name = "is_active", nullable = false)
+    @Builder.Default
     private boolean isActive = true;
 
     @PrePersist

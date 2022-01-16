@@ -12,9 +12,10 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 @Data
-@Builder
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @Entity(name = "gift_order")
 @Table(schema = "module_4")
 public class Order extends Auditable<String> {
