@@ -9,6 +9,8 @@ bootRun {
     systemProperty "spring.profiles.active", 'prod'
 }
 
+apply plugin: 'jacoco'
+
 allprojects {
     plugins.withType(JavaPlugin) {
         dependencies {
@@ -37,3 +39,18 @@ allprojects {
         }
     }
 }
+
+jacoco {
+    toolVersion = "0.8.5"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        // report generation location
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+test.finalizedBy jacocoTestReport
