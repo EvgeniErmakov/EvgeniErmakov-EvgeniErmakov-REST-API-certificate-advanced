@@ -2,6 +2,12 @@ https://github.com/mjc-school/MJC-School/blob/master/stage%20%233/java/module%20
 
 
 Add Jenkins credentials to Readme file in your git repository:
+
+
 login/password/role
+
+
 user/user/admin
+
+
 user2/user/developer
