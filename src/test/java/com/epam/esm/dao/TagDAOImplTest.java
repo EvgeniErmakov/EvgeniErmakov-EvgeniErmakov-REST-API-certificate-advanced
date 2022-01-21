@@ -34,7 +34,7 @@ class TagDAOImplTest {
     void findTagById() {
         Long id = 5L;
         Optional<Tag> tag = tagDAO.findById(id);
-        Assertions.assertEquals("fitness2", tag.get().getName());
+        Assertions.assertEquals("fitness", tag.get().getName());
     }
 
     @Test
