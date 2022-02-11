@@ -62,8 +62,7 @@ public class CertificateServiceImpl implements CertificateService {
     }
 
     @Override
-    public List<CertificateDTO> findAll(ParametersSpecificationDTO querySpecificationDTO,
-                                        Page page) {
+    public List<CertificateDTO> findAll(ParametersSpecificationDTO querySpecificationDTO, Page page) {
         ParametersSpecificationDTO querySpecification = mapperDTO.convertDTOToQuery(querySpecificationDTO);
         return certificateDAO.findAll(querySpecification, page)
             .stream()
