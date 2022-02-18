@@ -8,6 +8,7 @@ import com.epam.esm.model.entity.Page;
 import com.epam.esm.service.CertificateService;
 import com.epam.esm.service.TagService;
 import com.epam.esm.util.ResponseAssembler;
+import java.math.BigInteger;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -112,5 +113,10 @@ public class CertificateController {
     public List<TagDTO> findTagsByCertificateId(@PathVariable @Min(MIN_ID) Long id,
         @Valid Page page) {
         return ResponseAssembler.assembleTags(tagService.findAllByCertificateId(id, page));
+    }
+
+    @GetMapping(value = "/size")
+    public BigInteger findTagsByCertificateId2() {
+        return certificateService.getCountOfTest();
     }
 }

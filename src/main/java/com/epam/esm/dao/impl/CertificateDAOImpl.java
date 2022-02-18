@@ -5,6 +5,8 @@ import com.epam.esm.model.dto.ParametersSpecificationDTO;
 import com.epam.esm.model.entity.Certificate;
 import com.epam.esm.model.entity.Page;
 import com.epam.esm.model.entity.Tag;
+import java.math.BigInteger;
+import javax.persistence.Query;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ObjectUtils;
@@ -23,6 +25,7 @@ public class CertificateDAOImpl implements CertificateDAO {
     private final EntityManager entityManager;
 
     private static final String SELECT_ALL_CERTIFICATES = "SELECT certificate FROM gift_certificate certificate";
+    private static final String SELECT_COUNT_OF_CERTIFICATES = "SELECT count(*) FROM module_4.gift_certificate";
     private static final String CERTIFICATE_TAGS_ATTRIBUTE_NAME = "tags";
     private static final String NAME_COLUMN = "name";
     private static final String ID_COLUMN = "id";
@@ -33,6 +36,13 @@ public class CertificateDAOImpl implements CertificateDAO {
     private static final String SQL_ASC = "ASC";
     private static final String IS_ACTIVE_ATTRIBUTE = "isActive";
     private static final boolean IS_ACTIVE_VALUE = true;
+
+    @Override
+    public BigInteger getCountOfTest() {
+        Query nativeQuery = entityManager.createNativeQuery(SELECT_COUNT_OF_CERTIFICATES);
+        List resultList = nativeQuery.getResultList();
+        return (BigInteger) resultList.get(0);
+    }
 
     @Override
     public List<Certificate> findAll(ParametersSpecificationDTO querySpecification, Page page) {

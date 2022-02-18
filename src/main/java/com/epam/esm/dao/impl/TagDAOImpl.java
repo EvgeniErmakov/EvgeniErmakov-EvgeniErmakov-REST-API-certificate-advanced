@@ -3,6 +3,7 @@ package com.epam.esm.dao.impl;
 import com.epam.esm.dao.TagDAO;
 import com.epam.esm.model.entity.Page;
 import com.epam.esm.model.entity.Tag;
+import java.math.BigInteger;
 import javax.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.hibernate.Session;
@@ -28,6 +29,11 @@ public class TagDAOImpl implements TagDAO {
         + "relationship_certificates_and_tags.gift_certificate_id "
         + "INNER JOIN module_4.tag ON tag_id = tag.id GROUP BY user_id,tag_id, tag.id ORDER BY sum(cost) DESC, "
         + "count(tag_id) DESC LIMIT 1";
+
+    @Override
+    public BigInteger getCountOfTest() {
+        return null;
+    }
 
     @Override
     public List<Tag> findAll(Page page) {

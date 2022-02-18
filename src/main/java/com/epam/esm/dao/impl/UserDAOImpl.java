@@ -3,6 +3,7 @@ package com.epam.esm.dao.impl;
 import com.epam.esm.dao.UserDAO;
 import com.epam.esm.model.entity.Page;
 import com.epam.esm.model.entity.User;
+import java.math.BigInteger;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import lombok.AllArgsConstructor;
@@ -21,6 +22,11 @@ public class UserDAOImpl implements UserDAO {
     private final String METHOD_NOT_SUPPORTED = "method not supported yet";
     private static final String SELECT_ALL_USERS = "SELECT a FROM clientele a";
     private static final String SQL_FIND_USER_USE_LOGIN = "select u from clientele u where u.login=:login";
+
+    @Override
+    public BigInteger getCountOfTest() {
+        return null;
+    }
 
     @Override
     public List<User> findAll(Page page) {

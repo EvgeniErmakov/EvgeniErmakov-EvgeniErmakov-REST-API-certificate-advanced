@@ -14,6 +14,7 @@ import com.epam.esm.model.entity.Tag;
 import com.epam.esm.model.exception.EntityNotFoundException;
 import com.epam.esm.service.CertificateService;
 import com.epam.esm.util.MapperDTO;
+import java.math.BigInteger;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.stereotype.Service;
@@ -98,6 +99,11 @@ public class CertificateServiceImpl implements CertificateService {
         Certificate update = mapperDTO.convertPatchDTOToCertificate(patchDTO);
         certificate = certificateDAO.applyPatch(certificate, update);
         return mapperDTO.convertCertificateToDTO(certificate);
+    }
+
+    @Override
+    public BigInteger getCountOfTest() {
+        return certificateDAO.getCountOfTest();
     }
 
     @Override

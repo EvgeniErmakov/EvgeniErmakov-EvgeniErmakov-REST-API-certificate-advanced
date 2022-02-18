@@ -5,6 +5,7 @@ import com.epam.esm.model.dto.ParametersSpecificationDTO;
 import com.epam.esm.model.dto.PatchDTO;
 import com.epam.esm.model.entity.Page;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public interface CertificateService extends CommonService<CertificateDTO, Long> {
@@ -16,4 +17,6 @@ public interface CertificateService extends CommonService<CertificateDTO, Long> 
     CertificateDTO applyPatch(Long id, PatchDTO patchDTO);
 
     List<CertificateDTO> findAllByOrderId(Long id, Page page);
+
+    BigInteger getCountOfTest();
 }

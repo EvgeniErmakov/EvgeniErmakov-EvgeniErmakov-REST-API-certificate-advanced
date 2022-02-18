@@ -3,6 +3,7 @@ package com.epam.esm.dao.impl;
 import com.epam.esm.dao.OrderDAO;
 import com.epam.esm.model.entity.Order;
 import com.epam.esm.model.entity.Page;
+import java.math.BigInteger;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +17,11 @@ public class OrderDAOImpl implements OrderDAO {
 
     private static final String SELECT_ALL = "SELECT orders FROM gift_order orders";
     private final EntityManager entityManager;
+
+    @Override
+    public BigInteger getCountOfTest() {
+        return null;
+    }
 
     @Override
     public List<Order> findAll(Page page) {
