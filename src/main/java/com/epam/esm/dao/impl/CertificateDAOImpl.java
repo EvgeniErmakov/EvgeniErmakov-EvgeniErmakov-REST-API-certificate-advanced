@@ -25,7 +25,7 @@ public class CertificateDAOImpl implements CertificateDAO {
     private final EntityManager entityManager;
 
     private static final String SELECT_ALL_CERTIFICATES = "SELECT certificate FROM gift_certificate certificate";
-    private static final String SELECT_COUNT_OF_CERTIFICATES = "SELECT count(*) FROM module_4.gift_certificate";
+    private static final String SELECT_COUNT_OF_CERTIFICATES = "SELECT count(*) FROM module_4.gift_certificate WHERE is_active = true";
     private static final String CERTIFICATE_TAGS_ATTRIBUTE_NAME = "tags";
     private static final String NAME_COLUMN = "name";
     private static final String ID_COLUMN = "id";
