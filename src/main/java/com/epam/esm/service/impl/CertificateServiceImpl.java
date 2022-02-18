@@ -10,6 +10,7 @@ import com.epam.esm.model.dto.PatchDTO;
 import com.epam.esm.model.dto.TagDTO;
 import com.epam.esm.model.entity.Certificate;
 import com.epam.esm.model.entity.Page;
+import com.epam.esm.model.entity.Tag;
 import com.epam.esm.model.exception.EntityNotFoundException;
 import com.epam.esm.service.CertificateService;
 import com.epam.esm.util.MapperDTO;
@@ -121,9 +122,11 @@ public class CertificateServiceImpl implements CertificateService {
     }
 
     private void attachTags(Certificate certificate, Set<TagDTO> tags) {
+        Set<Tag> tagsHashSet = new HashSet();
         if (!ObjectUtils.isEmpty(tags)) {
             tags.forEach(
-                tag -> certificate.getTags().add(tagDAO.find(mapperDTO.convertDTOToTag(tag))));
+                tag -> tagsHashSet.add(tagDAO.find(mapperDTO.convertDTOToTag(tag))));
         }
+        certificate.setTags(tagsHashSet);
     }
 }

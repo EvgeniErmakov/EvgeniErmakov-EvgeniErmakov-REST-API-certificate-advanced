@@ -61,7 +61,7 @@ public class ResponseAssembler {
                 methodOn(CertificateController.class).findTagsByCertificateId(certificate.getId(),
                     new Page())).withRel("tags"));
         }
-        certificate.setTags(null);
+       // certificate.setTags(null);
         return certificate;
     }
 
