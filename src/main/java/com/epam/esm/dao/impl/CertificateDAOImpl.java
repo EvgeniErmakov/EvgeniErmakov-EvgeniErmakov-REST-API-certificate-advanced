@@ -38,10 +38,28 @@ public class CertificateDAOImpl implements CertificateDAO {
     private static final boolean IS_ACTIVE_VALUE = true;
 
     @Override
-    public BigInteger getCountOfTest() {
+    public BigInteger getCountOfCertificate() {
         Query nativeQuery = entityManager.createNativeQuery(SELECT_COUNT_OF_CERTIFICATES);
         List resultList = nativeQuery.getResultList();
         return (BigInteger) resultList.get(0);
+    }
+
+    public int getCountOfCertificateWithQuery(ParametersSpecificationDTO specification) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Certificate> criteriaQuery = criteriaBuilder.createQuery(Certificate.class);
+        Root<Certificate> root = criteriaQuery.from(Certificate.class);
+        List<Predicate> list = new ArrayList<>();
+        list.add(criteriaBuilder.equal(root.get(IS_ACTIVE_ATTRIBUTE), IS_ACTIVE_VALUE));
+
+        if (!ObjectUtils.isEmpty(specification.getText())) {
+            list.add(criteriaBuilder.or(criteriaBuilder.like(root.get(NAME_COLUMN),
+                    String.format(LIKE_OPERATOR_FORMAT, specification.getText())),
+                criteriaBuilder.like(root.get(DESCRIPTION_ATTRIBUTE),
+                    String.format(LIKE_OPERATOR_FORMAT, specification.getText()))));
+        }
+        Predicate[] predicates = new Predicate[list.size()];
+        CriteriaQuery<Certificate> query =  criteriaQuery.select(root).where(list.toArray(predicates));
+        return entityManager.createQuery(query).getResultList().size();
     }
 
     @Override

@@ -36,6 +36,11 @@ public class CertificateServiceImpl implements CertificateService {
     private final MapperDTO mapperDTO;
 
     @Override
+    public int getCountOfCertificateWithQuery(ParametersSpecificationDTO parameters) {
+        return certificateDAO.getCountOfCertificateWithQuery(parameters);
+    }
+
+    @Override
     @Transactional
     public CertificateDTO create(CertificateDTO certificateDTO) {
         Certificate certificate = mapperDTO.convertDTOToCertificate(certificateDTO);
@@ -102,8 +107,8 @@ public class CertificateServiceImpl implements CertificateService {
     }
 
     @Override
-    public BigInteger getCountOfTest() {
-        return certificateDAO.getCountOfTest();
+    public BigInteger getCountOfCertificate() {
+        return certificateDAO.getCountOfCertificate();
     }
 
     @Override

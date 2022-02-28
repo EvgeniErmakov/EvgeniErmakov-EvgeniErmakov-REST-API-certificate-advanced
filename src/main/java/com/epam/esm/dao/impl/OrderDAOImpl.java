@@ -19,7 +19,7 @@ public class OrderDAOImpl implements OrderDAO {
     private final EntityManager entityManager;
 
     @Override
-    public BigInteger getCountOfTest() {
+    public BigInteger getCountOfCertificate() {
         return null;
     }
 

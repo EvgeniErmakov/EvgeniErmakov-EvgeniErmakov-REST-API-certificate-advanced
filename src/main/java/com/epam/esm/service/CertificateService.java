@@ -18,5 +18,7 @@ public interface CertificateService extends CommonService<CertificateDTO, Long> 
 
     List<CertificateDTO> findAllByOrderId(Long id, Page page);
 
-    BigInteger getCountOfTest();
+    BigInteger getCountOfCertificate();
+
+    int getCountOfCertificateWithQuery(ParametersSpecificationDTO parameters);
 }

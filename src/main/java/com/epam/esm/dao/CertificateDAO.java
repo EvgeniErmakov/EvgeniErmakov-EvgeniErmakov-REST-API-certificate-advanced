@@ -12,4 +12,6 @@ public interface CertificateDAO extends CommonDAO<Certificate, Long> {
     Certificate update(Certificate certificate);
 
     Certificate applyPatch(Certificate certificate, Certificate update);
+
+    int getCountOfCertificateWithQuery(ParametersSpecificationDTO parameters);
 }

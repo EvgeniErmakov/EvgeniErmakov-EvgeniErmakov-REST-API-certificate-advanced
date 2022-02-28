@@ -116,7 +116,12 @@ public class CertificateController {
     }
 
     @GetMapping(value = "/size")
-    public BigInteger findTagsByCertificateId2() {
-        return certificateService.getCountOfTest();
+    public BigInteger getCountOfCertificate() {
+        return certificateService.getCountOfCertificate();
+    }
+
+    @GetMapping(value = "/getSize")
+    public int getCountOfCertificateWithQuery(ParametersSpecificationDTO parameters) {
+        return certificateService.getCountOfCertificateWithQuery(parameters);
     }
 }

@@ -15,5 +15,5 @@ public interface CommonDAO<T, K> {
 
     void delete(T t);
 
-    BigInteger getCountOfTest();
+    BigInteger getCountOfCertificate();
 }

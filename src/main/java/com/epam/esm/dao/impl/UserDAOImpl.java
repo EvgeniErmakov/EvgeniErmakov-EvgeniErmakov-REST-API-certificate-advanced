@@ -24,7 +24,7 @@ public class UserDAOImpl implements UserDAO {
     private static final String SQL_FIND_USER_USE_LOGIN = "select u from clientele u where u.login=:login";
 
     @Override
-    public BigInteger getCountOfTest() {
+    public BigInteger getCountOfCertificate() {
         return null;
     }
 

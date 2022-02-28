@@ -31,7 +31,7 @@ public class TagDAOImpl implements TagDAO {
         + "count(tag_id) DESC LIMIT 1";
 
     @Override
-    public BigInteger getCountOfTest() {
+    public BigInteger getCountOfCertificate() {
         return null;
     }
 
