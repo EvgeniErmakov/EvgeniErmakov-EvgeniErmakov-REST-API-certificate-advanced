@@ -36,7 +36,7 @@ public class CertificateServiceImpl implements CertificateService {
     private final MapperDTO mapperDTO;
 
     @Override
-    public int getCountOfCertificateWithQuery(ParametersSpecificationDTO parameters) {
+    public Long getCountOfCertificateWithQuery(ParametersSpecificationDTO parameters) {
         return certificateDAO.getCountOfCertificateWithQuery(parameters);
     }
 

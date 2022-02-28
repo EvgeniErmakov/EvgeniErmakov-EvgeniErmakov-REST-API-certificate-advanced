@@ -20,5 +20,5 @@ public interface CertificateService extends CommonService<CertificateDTO, Long> 
 
     BigInteger getCountOfCertificate();
 
-    int getCountOfCertificateWithQuery(ParametersSpecificationDTO parameters);
+    Long getCountOfCertificateWithQuery(ParametersSpecificationDTO parameters);
 }

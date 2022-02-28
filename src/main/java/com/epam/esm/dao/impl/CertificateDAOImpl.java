@@ -44,22 +44,22 @@ public class CertificateDAOImpl implements CertificateDAO {
         return (BigInteger) resultList.get(0);
     }
 
-    public int getCountOfCertificateWithQuery(ParametersSpecificationDTO specification) {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Certificate> criteriaQuery = criteriaBuilder.createQuery(Certificate.class);
-        Root<Certificate> root = criteriaQuery.from(Certificate.class);
+    public Long getCountOfCertificateWithQuery(ParametersSpecificationDTO specification) {
+        CriteriaBuilder qb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Long> cq = qb.createQuery(Long.class);
+        Root<Certificate> root = cq.from(Certificate.class);
+        cq.select(qb.count(root));
         List<Predicate> list = new ArrayList<>();
-        list.add(criteriaBuilder.equal(root.get(IS_ACTIVE_ATTRIBUTE), IS_ACTIVE_VALUE));
-
+        list.add(qb.equal(root.get(IS_ACTIVE_ATTRIBUTE), IS_ACTIVE_VALUE));
         if (!ObjectUtils.isEmpty(specification.getText())) {
-            list.add(criteriaBuilder.or(criteriaBuilder.like(root.get(NAME_COLUMN),
+            list.add(qb.or(qb.like(root.get(NAME_COLUMN),
                     String.format(LIKE_OPERATOR_FORMAT, specification.getText())),
-                criteriaBuilder.like(root.get(DESCRIPTION_ATTRIBUTE),
+                qb.like(root.get(DESCRIPTION_ATTRIBUTE),
                     String.format(LIKE_OPERATOR_FORMAT, specification.getText()))));
         }
         Predicate[] predicates = new Predicate[list.size()];
-        CriteriaQuery<Certificate> query =  criteriaQuery.select(root).where(list.toArray(predicates));
-        return entityManager.createQuery(query).getResultList().size();
+        cq.where(list.toArray(predicates));
+        return entityManager.createQuery(cq).getSingleResult();
     }
 
     @Override

@@ -121,7 +121,7 @@ public class CertificateController {
     }
 
     @GetMapping(value = "/getSize")
-    public int getCountOfCertificateWithQuery(ParametersSpecificationDTO parameters) {
+    public Long getCountOfCertificateWithQuery(ParametersSpecificationDTO parameters) {
         return certificateService.getCountOfCertificateWithQuery(parameters);
     }
 }
