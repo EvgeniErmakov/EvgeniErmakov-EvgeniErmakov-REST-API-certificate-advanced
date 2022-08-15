@@ -26,6 +26,6 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Build the Docker image
-        run: docker image build . -t certificate:ermakov
+        run: docker image build . -t evgeniermakov/certificate:ermakov
       - name: Push the Docker image to the registry
         run: docker push evgeniermakov/certificate:ermakov
