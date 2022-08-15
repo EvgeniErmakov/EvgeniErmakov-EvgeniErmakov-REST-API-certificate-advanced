@@ -28,4 +28,4 @@ jobs:
       - name: Build the Docker image
         run: docker image build . -t certificate:ermakov
       - name: Push the Docker image to the registry
-        run: docker push certificate:ermakov
+        run: docker push evgeniermakov/certificate:ermakov
