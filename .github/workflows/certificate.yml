@@ -23,6 +23,6 @@ jobs:
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       - name: Build the Docker image
-        run: docker image build . -t certificate:1.0.0
+        run: docker image build . -t certificate:ermakov
       - name: Push the Docker image to the registry
-        run: docker push certificate-ermakov:1.0.0
+        run: docker push certificate:ermakov
